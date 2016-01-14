@@ -39,6 +39,7 @@ bind 4S-Tab             rcycle
 # maximize
 bind 4-v                vmaximize
 bind 4-b                hmaximize
+bind C4-f               fullscreen
 
 # groups
 bind 4-1                grouponly1
