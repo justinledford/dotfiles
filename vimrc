@@ -8,12 +8,10 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-" YCM
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'chriskempson/base16-vim'
 Plugin 'bling/vim-airline'
-" Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()
 filetype plugin indent on
@@ -24,8 +22,6 @@ set number
 set tabstop=4
 set shiftwidth=4
 set expandtab
-"let g:hybrid_use_Xresources = 1
-"colorscheme hybrid
 let g:base16_shell_path="/home/justin/.dotfiles/colors/"
 let base16colorspace=256
 colorscheme base16-deafened-mod
@@ -42,8 +38,6 @@ map <C-H> <C-W><C-H>
 map <C-X> <C-W><C-X>
 
 
-
-execute pathogen#infect()
 
 " airline settings:
 let g:airline_left_sep=''
@@ -90,8 +84,7 @@ let g:netrw_liststyle = 3
 let g:netrw_winsize = -20
 
 " Change directory to the current buffer when opening files.
- set autochdir
-
+set autochdir
 
 " YCM settings
 let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
@@ -99,7 +92,6 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
-
 
 " autoclose info split
 autocmd CompleteDone * pclose
