@@ -1,0 +1,55 @@
+# settings
+moveamount              20
+sticky                  yes
+gap                     30 30 30 30
+
+# borders
+borderwidth             4
+color activeborder      "#5b6976"
+color inactiveborder    "#2e2e2e"
+
+# bindings
+bind 4-Return           urxvt
+bind 4-space            lighthouse_launch
+
+# move
+bind 4-h                moveleft
+bind 4-j                movedown
+bind 4-k                moveup
+bind 4-l                moveright
+bind 4-H                bigmoveleft
+bind 4-J                bigmovedown
+bind 4-K                bigmoveup
+bind 4-L                bigmoveright
+
+# resize
+bind 4C-h                resizeleft
+bind 4C-j                resizedown
+bind 4C-k                resizeup
+bind 4C-l                resizeright
+bind 4C-H                bigresizeleft
+bind 4C-J                bigresizedown
+bind 4C-K                bigresizeup
+bind 4C-L                bigresizeright
+
+# cycle
+bind 4-Tab              cycle
+bind 4S-Tab             rcycle
+
+# maximize
+bind 4-v                vmaximize
+bind 4-b                hmaximize
+
+# groups
+bind 4-1                grouponly1
+bind 4-2                grouponly2 
+bind 4-3                grouponly3 
+
+bind 4S-1               movetogroup1
+bind 4S-2               movetogroup2
+bind 4S-3               movetogroup3
+
+
+bind 4-q                delete
+bind 4S-r               restart
+bind 4S-q               quit

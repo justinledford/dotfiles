@@ -1,0 +1,53 @@
+" ==VimperatorColorSchema==
+" name: Base16 blueclouds2 Schema
+" ==/VimperatorColorSchema==
+" 
+
+hi Hint font-family: monospace; font-size: 12px; font-weight: normal; color: #2b2b2b; background-color: #507bb0; border: none; padding: 0px 5px 0px 5px;
+hi HintElem background-color: #b3b3b3; color: #2b2b2b;
+hi HintActive background-color: #5c7b83; color: #2b2b2b;
+
+hi StatusLine     color: #e6e1dc; background: transparent; font-weight: normal; font-size: 12px;
+
+hi Normal     color:  #b3b3b3;  background: #2b2b2b; font-size: 12px; opacity: 0.9;
+hi CmdLine    color:  #b3b3b3;  background: #2b2b2b; font-size: 12px;
+hi InfoMsg    color:  #b3b3b3;  background: #2b2b2b; font-size: 12px;
+hi ModeMsg    color:  #b3b3b3;  background: #2b2b2b; font-size: 12px;
+hi MoreMsg    color:  #5c7b83; background: #2b2b2b;
+hi LineNr   color:  #4871a4; background: #2b2b2b; font-size: 12px;
+hi Question   color: #6891e5;  background: #2b2b2b;  font-size: 12px;
+hi WarningMsg   color: #4871a4;  background: #2b2b2b;  font-size: 12px;
+hi ErrorMsg   color: #2b2b2b;  background: #4871a4;  font-size: 12px;
+hi NonText    background: #2b2b2b;
+hi Null     color: CornflowerBlue;
+hi Tag      color: CornflowerBlue;
+hi Number   color: #2b2b2b;
+hi Filter   color: #6891e5;
+
+hi CompTitle    color: #507bb0; background: #2b2b2b;
+hi CompTitle>*  color: #5c7b83; border-bottom: 1px solid #3c3c3f; padding: 1px 0.5ex;
+hi CompItem[selected] background: #323232;
+hi CompDesc   color: #507bb0;
+
+hi Title    color:  #2b2b2b;
+hi Indicator    color:  #6891e5;
+hi String   color:  #2b2b2b;
+hi Number   color:  #2b2b2b;
+hi Object   color: #7d9dc5;
+hi Function   color:  #507bb0;
+hi URL    color:  #e6e1dc; text-decoration: none;
+
+hi TabNumber  color: #2b2b2b; font-weight: bold; font-size:10pt;
+
+hi HelpWarning: color: #4871a4;
+hi WarningMsg: color: #4871a4;
+
+
+hi PromptText background-color: #5c7b83; color: #2b2b2b;
+
+
+style -name tab chrome://* <<EOM
+  .tabbrowser-strip {
+    background                         : #2b2b2b !important;
+  }
+EOM

@@ -1,0 +1,5 @@
+colorscheme base16-blueclouds2
+set focuscontent
+set popups=resized
+set status=input,location,bookmark,history,tabcount,position,ssl
+set hintchars=hjklasdfgyuiopqwertnmzxcvb

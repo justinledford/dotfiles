@@ -1,0 +1,49 @@
+#
+# ~/.ncmpcpp/config
+#
+
+media_library_primary_tag = "album_artist"
+display_bitrate = "yes"
+
+# visualizer settings
+
+#visualizer_fifo_path = "/tmp/mpd.fifo"
+#visualizer_output_name = "FIFO"
+#visualizer_sync_interval = "30" 
+#visualizer_in_stereo = "yes"
+#visualizer_type = "wave" (spectrum/wave)
+#visualizer_type = "spectrum" (spectrum/wave)
+#visualizer_look = ".|"
+#
+
+# colors
+#header_window_color = cyan
+#volume_color = blue
+#state_line_color = blue
+main_window_color = blue
+color1 = blue
+color2 = green
+#progressbar_color = blue
+#progressbar_elapsed_color = cyan
+#statusbar_color = blue
+alternative_ui_separator_color = green
+main_window_highlight_color = blue
+#active_column_color = cyan
+playlist_disable_highlight_delay = 1
+
+playlist_separate_albums = no
+playlist_editor_display_mode = columns
+
+header_visibility = no
+statusbar_visibility = no
+
+progressbar_look = "━━ "
+
+titles_visibility = no
+
+#song_list_format = "{$7%a$9 }{$5%t$9}|{$8%f$9}{$R$6%b$9}"
+#song_status_format = "{$7%a} - %t   %b"
+user_interface = "alternative"
+alternative_header_first_line_format = "{$7%t}"
+alternative_header_second_line_format = "%a - %b (%y)"
+song_columns_list_format = "(20)[blue]{a} (38)[cyan]{t} (35)[green]{b} (5)[blue]{lr}"
