@@ -37,6 +37,7 @@ alias info="info --vi-keys"
 alias irc="ssh -t capybara 'tmux a'"
 alias sync-mpd-playlists='rsync -v ~/Music/Playlists/mpd/ voyage:"/var/lib/mpd/playlists/"'
 alias sync-sd-playlists='rsync -v ~/Music/Playlists/mpd/ /mnt/sd/MUSIC/Playlists/'
+alias llamasay='cowsay -f llama'
 
 export EDITOR=vim
 
@@ -44,7 +45,7 @@ source /usr/bin/virtualenvwrapper.sh
 
 PATH=$PATH:~/bin/scripts:~/bin:~/.gem/ruby/2.2.0/bin
 
-COWPATH=/usr/share/cows:~/.cows
+export COWPATH=/usr/share/cows:~/.cows
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.dotfiles/colors/base16-deafened-mod.dark.sh"
