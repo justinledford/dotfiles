@@ -45,5 +45,5 @@ source /usr/bin/virtualenvwrapper.sh
 PATH=$PATH:~/bin/scripts:~/bin:~/.gem/ruby/2.2.0/bin
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.dotfiles/base16-deafened-mod.dark.sh"
+BASE16_SHELL="$HOME/.dotfiles/colors/base16-deafened-mod.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL

@@ -26,7 +26,7 @@ set shiftwidth=4
 set expandtab
 "let g:hybrid_use_Xresources = 1
 "colorscheme hybrid
-let g:base16_shell_path="/home/justin/.dotfiles/"
+let g:base16_shell_path="/home/justin/.dotfiles/colors/"
 let base16colorspace=256
 colorscheme base16-deafened-mod
 set nomodeline
