@@ -3,7 +3,7 @@
 " ==/VimperatorColorSchema==
 " 
 
-hi Hint font-family: monospace; font-size: 12px; font-weight: normal; color: #2e2e2e; background-color: #5b6976; border: none; padding: 0px 5px 0px 5px;
+hi Hint font-family: monospace; font-size: 12px; font-weight: normal; color: #2e2e2e; background-color: #5b6976; border: none; padding: 5px;
 hi HintElem background-color: #A5a6a2; color: #2e2e2e;
 hi HintActive background-color: #465457; color: #2e2e2e;
 
