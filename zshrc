@@ -35,8 +35,8 @@ alias tree='tree -C'
 alias watch-dmesg='watch "dmesg -T | tail -n 10"'
 alias info="info --vi-keys"
 alias irc="ssh -t capybara 'tmux a'"
-alias sync-mpd-playlists='rsync -v ~/Music/Playlists/mpd/ voyage:"/var/lib/mpd/playlists/"'
-alias sync-sd-playlists='rsync -v ~/Music/Playlists/mpd/ /mnt/sd/MUSIC/Playlists/'
+alias sync-mpd-playlists="rsync -v ~/Music/Playlists/mpd/*.m3u voyage:'/var/lib/mpd/playlists/'"
+alias sync-sd-playlists="rsync -v ~/Music/Playlists/mpd/ /mnt/sd/MUSIC/Playlists/"
 alias llamasay='cowsay -f llama'
 
 export EDITOR=vim
