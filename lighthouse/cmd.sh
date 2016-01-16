@@ -2,6 +2,7 @@
 
 
 commands=("chromium"
+          "easytag"
           "firefox"
           "thunderbird"
           "virtualbox"
