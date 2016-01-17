@@ -32,7 +32,6 @@ alias sync-mpd='rsync -rvt --delete --exclude={"*.jpg","*.png"} /mnt/WD3000ext4/
 alias backup-music='rsync -rvt --delete /mnt/WD3000ext4/Music/Library/ /mnt/exthd/MusicLibraryBackup/'
 alias music='ncmpcpp -h 192.168.1.108'
 alias tree='tree -C'
-alias watch-dmesg='watch "dmesg -T | tail -n 10"'
 alias info="info --vi-keys"
 alias irc="ssh -t capybara 'tmux a'"
 alias sync-mpd-playlists="rsync -v ~/Music/Playlists/mpd/*.m3u voyage:'/var/lib/mpd/playlists/'"
