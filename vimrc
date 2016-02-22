@@ -6,26 +6,30 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
 Plugin 'chriskempson/base16-vim'
-Plugin 'bling/vim-airline'
+Plugin 'vim-scripts/DoxygenToolkit.vim'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'itchyny/lightline.vim'
 
 call vundle#end()
 filetype plugin indent on
 
 syntax on
-set background=dark
 set number
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set nomodeline
 let g:base16_shell_path="/home/justin/.dotfiles/colors/"
 let base16colorspace=256
 colorscheme base16-deafened-mod
-set nomodeline
+
+" Show detailed status
+set laststatus=2
+" Disable default mode status
+set noshowmode
 
 "fix syntax highlighting
 autocmd BufEnter * :syntax sync fromstart
@@ -36,20 +40,6 @@ map <C-K> :bprev<CR>
 map <C-L> <C-W><C-L>
 map <C-H> <C-W><C-H>
 map <C-X> <C-W><C-X>
-
-
-
-" airline settings:
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-" netrw settings:
 
 " Toggle Vexplore with Ctrl-E
 function! ToggleVExplorer()
@@ -86,22 +76,25 @@ let g:netrw_winsize = -20
 " Change directory to the current buffer when opening files.
 set autochdir
 
-" YCM settings
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
+" Let YCM read tags from Ctags file
+let g:ycm_collect_identifiers_from_tags_files = 1
+" Default 1, just ensure
+let g:ycm_use_ultisnips_completer = 1
+" Completion for programming language's keyword
+let g:ycm_seed_identifiers_with_syntax = 1
+" Completion in comments
+let g:ycm_complete_in_comments = 1
+" Completion in string
+let g:ycm_complete_in_strings = 1
 
 " autoclose info split
 autocmd CompleteDone * pclose
 
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" use // comments instead of /* */
+let g:DoxygenToolkit_commentType = "C++"
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:lightline = {
+    \ 'colorscheme': '16color',
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '', 'right': '' }
+    \}
