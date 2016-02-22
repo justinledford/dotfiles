@@ -1,12 +1,12 @@
 #!/bin/bash
 
 
-commands=("cover.py"
-          "chromium"
+commands=("chromium"
           "easytag"
           "firefox"
           "gimp"
           "libreoffice"
+          "mpdcover"
           "teamviewer"
           "thunderbird"
           "virtualbox"
