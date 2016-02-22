@@ -1,11 +1,16 @@
 #!/bin/bash
 
 
-commands=("chromium"
+commands=("cover.py"
+          "chromium"
           "easytag"
           "firefox"
+          "gimp"
+          "libreoffice"
+          "teamviewer"
           "thunderbird"
           "virtualbox"
+          "xclock"
           "zathura")
 
 while read line; do
