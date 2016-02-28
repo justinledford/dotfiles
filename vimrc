@@ -41,6 +41,12 @@ map <C-L> <C-W><C-L>
 map <C-H> <C-W><C-H>
 map <C-X> <C-W><C-X>
 
+" keep undo history
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+set undoreload=10000
+
 " Toggle Vexplore with Ctrl-E
 function! ToggleVExplorer()
   if exists("t:expl_buf_num")
