@@ -1,0 +1,29 @@
+#include "/home/justin/.Xresources.d/colors/fdsa"
+
+URxvt.scrollBar: false
+URxvt.font:xft:Luxi Mono:pixelsize=12
+URxvt.boldFont:xft:Luxi Mono:pixelsize=12
+URxvt.boldMode: false
+URxvt.letterSpace: -2
+
+!keyboard-select
+
+URxvt.perl-ext-common: ...,keyboard-select,clipboard
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
+!paste from clipboard
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False
+
+!padding
+URxvt.internalBorder: 7
+
+!URxvt.depth: 0
+
+URxvt.pointerBlank: true
+URxvt.pointerBlankDelay: 0.0001
+
+
+Emacs*font: 7x14
+Emacs*foreground: lightgray
+Emacs*background: black

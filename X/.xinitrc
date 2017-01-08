@@ -18,6 +18,7 @@ autocutsel -selection PRIMARY -fork &
 
 launch_cwm() {
     compton &
+    redshift &>/dev/null &
     exec cwm
 }
 

@@ -4,9 +4,9 @@ sticky                  yes
 gap                     30 30 30 30
 
 # borders
-borderwidth             4
-color activeborder      "#5b6976"
-color inactiveborder    "#2e2e2e"
+borderwidth             6
+color activeborder      "#e6dcdc"
+color inactiveborder    "#ccc5c0"
 
 # bindings
 bind 4-Return           urxvt
@@ -45,12 +45,24 @@ bind C4-f               fullscreen
 bind 4-1                grouponly1
 bind 4-2                grouponly2 
 bind 4-3                grouponly3 
+bind 4-4                grouponly4
+bind 4-5                grouponly5 
+bind 4-6                grouponly6 
 
 bind 4S-1               movetogroup1
 bind 4S-2               movetogroup2
 bind 4S-3               movetogroup3
+bind 4S-4               movetogroup4
+bind 4S-5               movetogroup5
+bind 4S-6               movetogroup6
 
 
 bind 4-q                delete
 bind 4S-r               restart
 bind 4S-q               quit
+
+bind M-k unmap
+bind M-j unmap
+bind C-slash unmap
+bind M-Tab unmap
+bind CM-x unmap

@@ -6,12 +6,37 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" install plugins
 Plugin 'gmarik/Vundle.vim'
+
+" autocompleter
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'chriskempson/base16-vim'
+
+" doxygen
 Plugin 'vim-scripts/DoxygenToolkit.vim'
+
+" modeline and colors
+"Plugin 'chriskempson/base16-vim'
+"Plugin 'itchyny/lightline.vim'
+"Plugin 'daviesjamie/vim-base16-lightline'
+
+
+" help
 Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'itchyny/lightline.vim'
+Plugin 'Yggdroot/indentLine'
+
+" clojure
+"Plugin 'tpope/vim-fireplace'
+
+" common lisp repl, etc
+"Plugin 'kovisoft/slimv'
+
+Plugin 'jpalardy/vim-slime'
+
+Plugin 'vim-scripts/SyntaxRange'
+
+" latex
+Plugin 'xuhdev/vim-latex-live-preview'
 
 call vundle#end()
 filetype plugin indent on
@@ -22,9 +47,15 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set nomodeline
-let g:base16_shell_path="/home/justin/.dotfiles/colors/"
-let base16colorspace=256
-colorscheme base16-deafened-mod
+"let g:base16_shell_path="/home/justin/.dotfiles/colors/"
+"let base16colorspace=256
+"colorscheme base16-deafened-mod
+set colorcolumn=80
+set t_Co=16
+"set background=light
+
+" Added c here to disable YCM messages
+set shortmess=filnxtToOc
 
 " Show detailed status
 set laststatus=2
@@ -46,6 +77,36 @@ set undofile
 set undodir=$HOME/.vim/undo
 set undolevels=1000
 set undoreload=10000
+
+" Color edits
+hi Pmenu ctermfg=0 ctermbg=15 guifg=#ffffff guibg=#000000
+hi PmenuSel ctermfg=15 ctermbg=4 guifg=#ffffff guibg=#000000
+hi Visual ctermbg=12 ctermfg=15
+hi StatusLine ctermfg=0 ctermbg=15 cterm=NONE
+hi StatusLineNC ctermfg=0 ctermbg=7 cterm=NONE
+
+hi YcmErrorSection ctermbg=15 ctermfg=0
+hi YcmWarningSection ctermbg=15 ctermfg=0
+hi YcmErrorSign ctermbg=1 ctermfg=7
+hi YcmWarningSign ctermbg=1 ctermfg=7
+
+hi ColorColumn ctermbg=15
+
+hi Folded ctermbg=15 ctermfg=0
+hi LineNr ctermbg=15 ctermfg=0
+
+
+" Formats the statusline
+"set statusline=%f                           " file name
+"set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+"set statusline+=%{&ff}] "file format
+"set statusline+=%y      "filetype
+"set statusline+=%h      "help file flag
+"set statusline+=%m      "modified flag
+"set statusline+=%r      "read only flag
+"set statusline+=\ %=                  " align left
+"set statusline+=%p%%    "percent lines of file
+"set statusline+=\ \ \ %l:%c              " current column
 
 " Toggle Vexplore with Ctrl-E
 function! ToggleVExplorer()
@@ -92,6 +153,10 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 1
 " Completion in string
 let g:ycm_complete_in_strings = 1
+" Set python interpreter
+let g:ycm_path_to_python_interpreter = "/usr/bin/python"
+
+
 
 " autoclose info split
 autocmd CompleteDone * pclose
@@ -99,8 +164,18 @@ autocmd CompleteDone * pclose
 " use // comments instead of /* */
 let g:DoxygenToolkit_commentType = "C++"
 
-let g:lightline = {
-    \ 'colorscheme': '16color',
-    \ 'separator': { 'left': '', 'right': '' },
-    \ 'subseparator': { 'left': '', 'right': '' }
-    \}
+"let g:lightline = {
+"    \ 'colorscheme': '16color',
+"    \ 'separator': { 'left': '', 'right': '' },
+"    \ 'subseparator': { 'left': '', 'right': '' }
+"    \}
+
+" SLIMV
+let g:lisp_rainbow=1
+let g:paredit_mode=0
+
+" latex
+let g:livepreview_previewer = 'zathura'
+
+" vim-slime
+let g:slime_target = "tmux"

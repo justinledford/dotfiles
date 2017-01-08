@@ -2,13 +2,17 @@
 
 
 commands=("chromium"
+          "dia"
           "easytag"
+          "emacs"
           "firefox"
           "gimp"
           "libreoffice"
           "mpdcover"
+          "spotify"
           "teamviewer"
           "thunderbird"
+          "thunar"
           "virtualbox"
           "xclock"
           "zathura")
