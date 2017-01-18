@@ -21,6 +21,7 @@ bind 4-H                bigmoveleft
 bind 4-J                bigmovedown
 bind 4-K                bigmoveup
 bind 4-L                bigmoveright
+mousebind 4-1           window_move
 
 # resize
 bind 4C-h                resizeleft
@@ -43,11 +44,11 @@ bind C4-f               fullscreen
 
 # groups
 bind 4-1                grouponly1
-bind 4-2                grouponly2 
-bind 4-3                grouponly3 
+bind 4-2                grouponly2
+bind 4-3                grouponly3
 bind 4-4                grouponly4
-bind 4-5                grouponly5 
-bind 4-6                grouponly6 
+bind 4-5                grouponly5
+bind 4-6                grouponly6
 
 bind 4S-1               movetogroup1
 bind 4S-2               movetogroup2
@@ -61,8 +62,26 @@ bind 4-q                delete
 bind 4S-r               restart
 bind 4S-q               quit
 
-bind M-k unmap
-bind M-j unmap
-bind C-slash unmap
-bind M-Tab unmap
-bind CM-x unmap
+bind M-j                unmap
+bind M-k                unmap
+bind M-h                unmap
+bind M-l                unmap
+bind MS-j               unmap
+bind MS-k               unmap
+bind MS-h               unmap
+bind MS-l               unmap
+bind MC-j               unmap
+bind MC-k               unmap
+bind MC-h               unmap
+bind MC-l               unmap
+bind MCS-j              unmap
+bind MCS-k              unmap
+bind MCS-h              unmap
+bind MCS-l              unmap
+bind M-Tab              unmap
+bind MS-Tab             unmap
+bind M-Return           unmap
+bind M-Space            unmap
+mousebind M-1           unmap
+bind C-slash            unmap
+bind CM-x               unmap
