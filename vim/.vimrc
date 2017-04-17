@@ -34,8 +34,10 @@ Plug 'jpalardy/vim-slime'
 " Latex live preview
 Plug 'xuhdev/vim-latex-live-preview'
 
-" Typescript syntax and indenting
+" Typescript syntax highlighting and indenting
 Plug 'leafgarland/typescript-vim'
+" Typescript syntax checker and navigation
+Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
 
 "" HTML
 " Auto close html tags
@@ -184,3 +186,6 @@ set statusline+=%*
 
 " Auto close when no errors, auto open when errors
 let g:syntastic_auto_loc_list = 1
+
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
