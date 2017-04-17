@@ -16,6 +16,8 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 " Fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
+" Syntax checker
+Plug 'vim-syntastic/syntastic', {'for': 'python'}
 
 "" Helpers
 " Highlight trailing white space
@@ -104,10 +106,13 @@ hi ColorColumn          ctermbg=15
 hi Folded               ctermbg=15  ctermfg=0
 hi LineNr               ctermbg=15  ctermfg=0
 hi Todo                 ctermbg=15  ctermfg=0
+hi Search               ctermbg=7   ctermfg=0
+
 hi YcmErrorSection      ctermbg=15  ctermfg=0
 hi YcmWarningSection    ctermbg=15  ctermfg=0
 hi YcmErrorSign         ctermbg=1   ctermfg=7
 hi YcmWarningSign       ctermbg=1   ctermfg=7
+
 hi TagbarHighlight      ctermbg=15  ctermfg=0
 
 
@@ -169,3 +174,11 @@ let g:slime_target = "tmux"
 "" Gutentags
 " Cache all tags in dir
 let g:gutentags_cache_dir = "~/.tags"
+
+"" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" Auto close when no errors, auto open when errors
+let g:syntastic_auto_loc_list = 1
