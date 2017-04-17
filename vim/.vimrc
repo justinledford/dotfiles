@@ -14,6 +14,8 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 " Directory listing
 Plug 'scrooloose/nerdtree'
+" Fuzzy finder
+Plug 'ctrlpvim/ctrlp.vim'
 
 "" Helpers
 " Highlight trailing white space
@@ -86,10 +88,6 @@ set undoreload=10000
 
 " Change directory to the current buffer when opening files
 set autochdir
-
-" Look for tags recursively from current dir upwards
-set tags=./tags,tags;$HOME
-
 
 """"""""""""""""""""
 """ Theme
