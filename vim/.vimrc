@@ -167,3 +167,7 @@ let g:livepreview_previewer = 'zathura'
 
 "" vim-slime
 let g:slime_target = "tmux"
+
+"" Gutentags
+" Cache all tags in dir
+let g:gutentags_cache_dir = "~/.tags"
