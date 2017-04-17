@@ -17,7 +17,7 @@ Plug 'scrooloose/nerdtree'
 " Fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
 " Syntax checker
-Plug 'vim-syntastic/syntastic', {'for': 'python'}
+Plug 'vim-syntastic/syntastic'
 
 "" Helpers
 " Highlight trailing white space
@@ -158,6 +158,8 @@ let g:ycm_complete_in_strings = 1
 let g:ycm_path_to_python_interpreter = "/usr/bin/python"
 " Auto load conf file
 let g:ycm_confirm_extra_conf = 0
+" Disable diagnostics UI for compatibility with Syntastic
+let g:ycm_show_diagnostics_ui = 0
 " autoclose info split
 autocmd CompleteDone * pclose
 
