@@ -1,0 +1,16 @@
+chromium
+dia
+easytag
+emacs
+firefox
+franz
+gimp
+libreoffice
+mpdcover
+spotify
+teamviewer
+thunderbird
+thunar
+virtualbox
+xclock
+zathura
