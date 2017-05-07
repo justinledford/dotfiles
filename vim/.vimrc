@@ -37,13 +37,17 @@ Plug 'xuhdev/vim-latex-live-preview'
 " Typescript syntax highlighting and indenting
 Plug 'leafgarland/typescript-vim'
 " Typescript syntax checker and navigation
-Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
+"Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
 
 "" HTML
 " Auto close html tags
 Plug 'alvan/vim-closetag'
 " Highlight html tags
 Plug 'gregsexton/MatchTag'
+
+" Show git diff in gutter
+Plug 'airblade/vim-gitgutter'
+
 
 call plug#end()
 
@@ -93,6 +97,21 @@ set undoreload=10000
 " Change directory to the current buffer when opening files
 set autochdir
 
+" Remove ruler
+set noruler
+
+" Always show status line
+set laststatus=2
+
+" Show quotes in JSON
+set conceallevel=0
+
+" Skip prompt on reload buffers
+set autoread
+
+" Set a faster update time
+set updatetime=250
+
 """"""""""""""""""""
 """ Theme
 """"""""""""""""""""
@@ -101,8 +120,8 @@ set autochdir
 hi Pmenu                ctermbg=15  ctermfg=0
 hi PmenuSel             ctermbg=4   ctermfg=15
 hi Visual               ctermbg=12  ctermfg=15
-hi StatusLine           ctermbg=15  ctermfg=0   cterm=NONE
-hi StatusLineNC         ctermbg=7   ctermfg=0   cterm=NONE
+hi StatusLine           ctermbg=4   ctermfg=7   cterm=NONE
+hi StatusLineNC         ctermbg=15  ctermfg=0   cterm=NONE
 hi MatchParen           ctermbg=15  ctermfg=0
 hi ColorColumn          ctermbg=15
 hi Folded               ctermbg=15  ctermfg=0
@@ -116,6 +135,9 @@ hi YcmErrorSign         ctermbg=1   ctermfg=7
 hi YcmWarningSign       ctermbg=1   ctermfg=7
 
 hi TagbarHighlight      ctermbg=15  ctermfg=0
+
+"" Statusline
+set statusline=%f\ %h%w%m%r%y\ %=%(%l,%c%V\ %=\ %P%)
 
 
 """"""""""""""""""""
@@ -143,6 +165,11 @@ map <Leader>e :NERDTreeToggle<cr>
 "" Open tagbar
 map <Leader>t :TagbarToggle<cr>
 
+"" Reload all buffers
+map <Leader>r :checkt<cr>
+
+"" Strip whitespace
+map <Leader>s :StripWhitespace<cr>
 
 """"""""""""""""""""
 """ Plugins config
@@ -180,12 +207,13 @@ let g:slime_target = "tmux"
 let g:gutentags_cache_dir = "~/.tags"
 
 "" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 " Auto close when no errors, auto open when errors
 let g:syntastic_auto_loc_list = 1
+
+" Check everything except html
+let g:syntastic_mode_map={ 'mode': 'active',
+                     \ 'active_filetypes': [],
+                     \ 'passive_filetypes': ['html'] }
 
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi']
