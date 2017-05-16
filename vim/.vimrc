@@ -48,6 +48,11 @@ Plug 'gregsexton/MatchTag'
 " Show git diff in gutter
 Plug 'airblade/vim-gitgutter'
 
+" Source local vimrc files
+Plug 'embear/vim-localvimrc'
+
+" Execute shell commands in tmux panes
+Plug 'justinledford/vim-shellphone'
 
 call plug#end()
 
@@ -112,6 +117,9 @@ set autoread
 " Set a faster update time
 set updatetime=250
 
+" Set .h to c filetype instead of cpp
+autocmd BufNewFile,BufRead *.h   set filetype=c
+
 """"""""""""""""""""
 """ Theme
 """"""""""""""""""""
@@ -171,6 +179,13 @@ map <Leader>r :checkt<cr>
 "" Strip whitespace
 map <Leader>s :StripWhitespace<cr>
 
+"" Search tag
+map <Leader>st :tag<Space>
+
+"" Check syntax
+map <Leader>sc :SyntasticCheck<cr>
+
+
 """"""""""""""""""""
 """ Plugins config
 """"""""""""""""""""
@@ -210,10 +225,14 @@ let g:gutentags_cache_dir = "~/.tags"
 " Auto close when no errors, auto open when errors
 let g:syntastic_auto_loc_list = 1
 
-" Check everything except html
-let g:syntastic_mode_map={ 'mode': 'active',
-                     \ 'active_filetypes': [],
-                     \ 'passive_filetypes': ['html'] }
+" Don't check on closing
+let g:syntastic_check_on_wq = 0
 
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi']
+" Only check syntax on certain filetypes
+let g:syntastic_mode_map={ 'mode': 'passive',
+                     \ 'active_filetypes': [''],
+                     \ 'passive_filetypes': [''] }
+
+"" Localvimrc
+let g:localvimrc_sandbox = 0
+let g:localvimrc_whitelist='.*'
