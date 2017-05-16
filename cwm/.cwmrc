@@ -10,7 +10,7 @@ color inactiveborder    "#ccc5c0"
 
 # bindings
 bind 4-Return           urxvt
-bind 4-space            lighthouse_launch
+bind 4-space            dmenu_run.sh
 
 # move
 bind 4-h                moveleft
