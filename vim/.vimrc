@@ -12,8 +12,6 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'ludovicchabant/vim-gutentags'
 " Display tags in a window
 Plug 'majutsushi/tagbar'
-" Directory listing
-Plug 'scrooloose/nerdtree'
 " Fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
 " Syntax checker
@@ -34,11 +32,6 @@ Plug 'jpalardy/vim-slime'
 " Latex live preview
 Plug 'xuhdev/vim-latex-live-preview'
 
-" Typescript syntax highlighting and indenting
-Plug 'leafgarland/typescript-vim'
-" Typescript syntax checker and navigation
-"Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
-
 "" HTML
 " Auto close html tags
 Plug 'alvan/vim-closetag'
@@ -48,11 +41,11 @@ Plug 'gregsexton/MatchTag'
 " Show git diff in gutter
 Plug 'airblade/vim-gitgutter'
 
-" Source local vimrc files
-Plug 'embear/vim-localvimrc'
+" Vue.js syntax highlighting
+Plug 'posva/vim-vue'
 
-" Execute shell commands in tmux panes
-Plug 'justinledford/vim-shellphone'
+" Run external formatters/linters on buffer
+Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
 
@@ -117,8 +110,31 @@ set autoread
 " Set a faster update time
 set updatetime=250
 
-" Set .h to c filetype instead of cpp
-autocmd BufNewFile,BufRead *.h   set filetype=c
+" Fix backspace
+set backspace=2
+
+" Highlight search term
+set hlsearch
+
+" Set signcolumn always on
+set signcolumn=yes
+
+" Set netrw to list style to tree style
+let g:netrw_liststyle=3
+
+" Hide netrw banner
+let g:netrw_banner=0
+
+"""""""""""""""""""
+""" File type settings
+"""""""""""""""""""
+
+" HTML: 2 spaces for indentation
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType xml setlocal shiftwidth=2 tabstop=2
+autocmd FileType vue setlocal shiftwidth=2 tabstop=2
+autocmd FileType js setlocal shiftwidth=2 tabstop=2
+
 
 """"""""""""""""""""
 """ Theme
@@ -135,7 +151,7 @@ hi ColorColumn          ctermbg=15
 hi Folded               ctermbg=15  ctermfg=0
 hi LineNr               ctermbg=15  ctermfg=0
 hi Todo                 ctermbg=15  ctermfg=0
-hi Search               ctermbg=7   ctermfg=0
+hi Search               ctermbg=15  ctermfg=0
 
 hi YcmErrorSection      ctermbg=15  ctermfg=0
 hi YcmWarningSection    ctermbg=15  ctermfg=0
@@ -145,7 +161,22 @@ hi YcmWarningSign       ctermbg=1   ctermfg=7
 hi TagbarHighlight      ctermbg=15  ctermfg=0
 
 "" Statusline
-set statusline=%f\ %h%w%m%r%y\ %=%(%l,%c%V\ %=\ %P%)
+
+set statusline=%f                                 " filename
+set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}, " file encoding
+set statusline+=%{&ff}]                           " file format
+set statusline+=\ %h                              " help file flag
+set statusline+=%m                                " modified flag
+set statusline+=%r                                " read only flag
+set statusline+=%y                                " filetype
+
+set statusline+=%#error#                          " show error if file has
+set statusline+=%{MixedIndentingWarning()}        " mix of tabs and spaces
+set statusline+=%*
+
+set statusline+=%=                                " left/right separator
+set statusline+=%l,%c                             " line number, column number
+set statusline+=\ %P                              " percent through file
 
 
 """"""""""""""""""""
@@ -167,8 +198,7 @@ map <C-H> <C-W><C-H>
 map <C-X> <C-W><C-X>
 
 "" Open Netrw listing
-"map <Leader>e :Lexplore<cr>
-map <Leader>e :NERDTreeToggle<cr>
+map <Leader>e :Explore<cr>
 
 "" Open tagbar
 map <Leader>t :TagbarToggle<cr>
@@ -179,11 +209,14 @@ map <Leader>r :checkt<cr>
 "" Strip whitespace
 map <Leader>s :StripWhitespace<cr>
 
-"" Search tag
-map <Leader>st :tag<Space>
+"" Delete current buffer
+map <Leader>bd :bp\|bd<Space>#<cr>
 
-"" Check syntax
-map <Leader>sc :SyntasticCheck<cr>
+"" Change all tabs to spaces
+map <Leader>rt :retab<cr>
+
+"" Hit enter to clear search highlighting
+nnoremap <CR> :noh<CR><CR>
 
 
 """"""""""""""""""""
@@ -225,14 +258,11 @@ let g:gutentags_cache_dir = "~/.tags"
 " Auto close when no errors, auto open when errors
 let g:syntastic_auto_loc_list = 1
 
-" Don't check on closing
-let g:syntastic_check_on_wq = 0
+" Check everything except html
+let g:syntastic_mode_map={ 'mode': 'active',
+                     \ 'active_filetypes': [],
+                     \ 'passive_filetypes': ['html'] }
 
-" Only check syntax on certain filetypes
-let g:syntastic_mode_map={ 'mode': 'passive',
-                     \ 'active_filetypes': [''],
-                     \ 'passive_filetypes': [''] }
 
-"" Localvimrc
-let g:localvimrc_sandbox = 0
-let g:localvimrc_whitelist='.*'
+"" closetag
+let g:closetag_filenames = "*.html,*.vue"

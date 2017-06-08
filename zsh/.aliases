@@ -1,16 +1,17 @@
 # Aliases
 alias ls='ls --color=auto -N'
-alias sync-sd-test='rsync -nrvt --stats --modify-window=1 --exclude={"*.jpg","*.png"} --delete /mnt/WD3000ext4/Music/Library/ /mnt/sd/MUSIC'
-alias sync-sd='rsync -rvt --modify-window=1 --exclude={"*.jpg","*.png"} --delete /mnt/WD3000ext4/Music/Library/ /mnt/sd/MUSIC'
-alias backup='sudo rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} --delete /* /mnt/exthd/ArchBackup/'
-alias sync-mpd-test='rsync -nrvt --delete --exclude={"*.jpg","*.png"} /mnt/WD3000ext4/Music/Library/ /mnt/LS/Music/Library/'
-alias sync-mpd='rsync -rvt --delete --exclude={"*.jpg","*.png"} /mnt/WD3000ext4/Music/Library/ /mnt/LS/Music/Library/'
-alias backup-music='rsync -rvt --delete /mnt/WD3000ext4/Music/Library/ /mnt/exthd/MusicLibraryBackup/'
-alias tree='tree -C'
-alias info="info --vi-keys"
-alias irc="ssh -t capybara 'tmux a'"
-alias sync-mpd-playlists="rsync -v ~/Music/Playlists/mpd/*.m3u orca:'/var/lib/mpd/playlists/'"
-alias sync-sd-playlists="rsync -v ~/Music/Playlists/walkman/*.m3u /mnt/sd/MUSIC/Playlists/"
-alias llamasay='cowsay -f llama'
-alias xclock='xclock -bg white'
+alias ll='ls -l'
+alias la='ls -la'
 
+alias so='source'
+
+# show visible line numbers and percentage
+alias less='less -M +Gg'
+
+# git aliases
+alias gd='git diff'
+alias gdn='git diff --name-only'
+alias gda='git add $(git diff --name-only)'
+alias gcm='git commit -m'
+alias gpo='git push origin'
+alias ga='git add'
