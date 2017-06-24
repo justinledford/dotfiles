@@ -1,7 +1,1 @@
-mkvirtualenv () {
-    WD=$(pwd)
-    cd ~/.virtualenvs
-    virtualenv $@
-    source ${@[-1]}/bin/activate
-    cd $WD
-}
+
