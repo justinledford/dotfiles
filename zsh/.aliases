@@ -5,6 +5,8 @@ alias la='ls -la'
 
 alias so='source'
 
+alias x='exit'
+
 # show visible line numbers and percentage
 alias less='less -M +Gg'
 

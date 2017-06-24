@@ -13,7 +13,7 @@ Plug 'ludovicchabant/vim-gutentags'
 " Display tags in a window
 Plug 'majutsushi/tagbar'
 " Fuzzy finder
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 " Syntax checker
 Plug 'vim-syntastic/syntastic'
 
@@ -32,10 +32,13 @@ Plug 'jpalardy/vim-slime'
 " Latex live preview
 Plug 'xuhdev/vim-latex-live-preview'
 
+" Markdown live preview
+Plug 'suan/vim-instant-markdown'
+
 "" HTML
 " Auto close html tags
 Plug 'alvan/vim-closetag'
-" Highlight html tags
+"" Highlight html tags
 Plug 'gregsexton/MatchTag'
 
 " Show git diff in gutter
@@ -46,6 +49,12 @@ Plug 'posva/vim-vue'
 
 " Run external formatters/linters on buffer
 Plug 'Chiel92/vim-autoformat'
+
+" Move between vim and tmux panes
+Plug 'christoomey/vim-tmux-navigator'
+
+" Show buffers in tabline
+Plug 'ap/vim-buftabline'
 
 call plug#end()
 
@@ -125,6 +134,9 @@ let g:netrw_liststyle=3
 " Hide netrw banner
 let g:netrw_banner=0
 
+" Show relative line numbers
+set relativenumber
+
 """""""""""""""""""
 """ File type settings
 """""""""""""""""""
@@ -133,7 +145,7 @@ let g:netrw_banner=0
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType xml setlocal shiftwidth=2 tabstop=2
 autocmd FileType vue setlocal shiftwidth=2 tabstop=2
-autocmd FileType js setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 
 """"""""""""""""""""
@@ -159,6 +171,11 @@ hi YcmErrorSign         ctermbg=1   ctermfg=7
 hi YcmWarningSign       ctermbg=1   ctermfg=7
 
 hi TagbarHighlight      ctermbg=15  ctermfg=0
+
+hi TabLineSel           ctermbg=4   ctermfg=15  cterm=NONE
+hi BufTabLineActive     ctermbg=15  ctermfg=0
+hi TabLine              ctermbg=15  ctermfg=0   cterm=NONE
+hi TabLineFill                      ctermfg=15
 
 "" Statusline
 
@@ -186,14 +203,6 @@ set statusline+=\ %P                              " percent through file
 "" Set leader key to space
 let mapleader=" "
 
-" Cycle through buffers
-map <C-J> :bnext<CR>
-map <C-K> :bprev<CR>
-
-" Select splits
-map <C-L> <C-W><C-L>
-map <C-H> <C-W><C-H>
-
 " Switch splits
 map <C-X> <C-W><C-X>
 
@@ -218,6 +227,14 @@ map <Leader>rt :retab<cr>
 "" Hit enter to clear search highlighting
 nnoremap <CR> :noh<CR><CR>
 
+"" Autoformat
+map <Leader>af :Autoformat<CR>
+
+
+" Switch to open buffers
+map <C-n> :bnext<CR>
+map <C-p> :bprevious<CR>
+
 
 """"""""""""""""""""
 """ Plugins config
@@ -225,7 +242,7 @@ nnoremap <CR> :noh<CR><CR>
 
 "" YCM
 " Let YCM read tags from Ctags file
-let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_collect_identifiers_from_tags_files = 0
 " Completion for programming language's keyword
 let g:ycm_seed_identifiers_with_syntax = 1
 " Completion in comments

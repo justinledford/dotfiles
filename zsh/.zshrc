@@ -22,19 +22,22 @@ autoload -U prompt_special_chars
 prompt_special_chars
 PROMPT="%{$fg[green]%}%m %{$fg[blue]%}%1~%{$reset_color%} $ "
 
-PATH=$PATH:~/bin/scripts:~/bin:~/.gem/ruby/2.2.0/bin:~/.local/bin
-export EDITOR=vim
-export COWPATH=/usr/share/cows:~/.cows
+PATH=$PATH:~/bin:~/.local/bin
+EDITOR=vim
 
-source ~/.aliases
-
-# NPM stuff
+# Use npm global without sudo
 NPM_PACKAGES="${HOME}/.npm-packages"
-PATH="$NPM_PACKAGES/bin:$PATH"
+PATH="$PATH:$NPM_PACKAGES/bin"
 
-# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
-unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+unset MANPATH
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
-# OPAM configuration
-. /home/justin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+source ~/.aliases
+source ~/.functions
+
+source ~/.local/bin/virtualenvwrapper_lazy.sh
+
+# Edit commands with vim
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
