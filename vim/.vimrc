@@ -56,6 +56,12 @@ Plug 'christoomey/vim-tmux-navigator'
 " Show buffers in tabline
 Plug 'ap/vim-buftabline'
 
+" Dope git wrapper
+Plug 'tpope/vim-fugitive'
+
+" Edit 'surroundings'
+Plug 'tpope/vim-surround'
+
 call plug#end()
 
 
@@ -137,6 +143,9 @@ let g:netrw_banner=0
 " Show relative line numbers
 set relativenumber
 
+" Don't add newline at end of file
+set nofixeol
+
 """""""""""""""""""
 """ File type settings
 """""""""""""""""""
@@ -146,6 +155,7 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType xml setlocal shiftwidth=2 tabstop=2
 autocmd FileType vue setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 
 """"""""""""""""""""
