@@ -13,11 +13,8 @@ URxvt.perl-ext-common: ...,keyboard-select,clipboard
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 
 !paste from clipboard
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.C-v: perl:clipboard:paste
 URxvt.iso14755: False
 
 !padding
 URxvt.internalBorder: 7
-
-URxvt.pointerBlank: true
-URxvt.pointerBlankDelay: 0.0001
