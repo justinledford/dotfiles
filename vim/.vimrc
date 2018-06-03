@@ -6,49 +6,27 @@
 call plug#begin('~/.vim/plugged')
 
 "" General
+
 " Autocomplete engine
 Plug 'Valloric/YouCompleteMe'
+
 " Auto generate tags
 Plug 'ludovicchabant/vim-gutentags'
+
 " Display tags in a window
 Plug 'majutsushi/tagbar'
-" Fuzzy finder
-" Plug 'ctrlpvim/ctrlp.vim'
+
 " Syntax checker
 Plug 'vim-syntastic/syntastic'
 
-"" Helpers
 " Highlight trailing white space
 Plug 'ntpeters/vim-better-whitespace'
+
 " Show indent lines
 Plug 'Yggdroot/indentLine'
 
-" Generate doxygen comment snippets
-Plug 'vim-scripts/DoxygenToolkit.vim'
-
-" Send code to REPL in a tmux pane
-Plug 'jpalardy/vim-slime'
-
-" Latex live preview
-Plug 'xuhdev/vim-latex-live-preview'
-
-" Markdown live preview
-Plug 'suan/vim-instant-markdown'
-
-"" HTML
-" Auto close html tags
-Plug 'alvan/vim-closetag'
-"" Highlight html tags
-Plug 'gregsexton/MatchTag'
-
 " Show git diff in gutter
 Plug 'airblade/vim-gitgutter'
-
-" Vue.js syntax highlighting
-Plug 'posva/vim-vue'
-
-" Run external formatters/linters on buffer
-Plug 'Chiel92/vim-autoformat'
 
 " Move between vim and tmux panes
 Plug 'christoomey/vim-tmux-navigator'
@@ -56,11 +34,39 @@ Plug 'christoomey/vim-tmux-navigator'
 " Show buffers in tabline
 Plug 'ap/vim-buftabline'
 
-" Dope git wrapper
+" git wrapper
 Plug 'tpope/vim-fugitive'
 
 " Edit 'surroundings'
 Plug 'tpope/vim-surround'
+
+
+"" Language specific
+" Generate doxygen comment snippets
+"Plug 'vim-scripts/DoxygenToolkit.vim'
+
+" Send code to REPL in a tmux pane
+"Plug 'jpalardy/vim-slime'
+
+" Latex live preview
+"Plug 'xuhdev/vim-latex-live-preview'
+
+" Markdown live preview
+"Plug 'suan/vim-instant-markdown'
+
+"" HTML
+" Auto close html tags
+"Plug 'alvan/vim-closetag'
+""" Highlight html tags
+"Plug 'gregsexton/MatchTag'
+
+" Vue.js syntax highlighting
+"Plug 'posva/vim-vue'
+
+" Run external formatters/linters on buffer
+"Plug 'Chiel92/vim-autoformat'
+
+"Plug 'elixir-lang/vim-elixir'
 
 call plug#end()
 
@@ -96,7 +102,7 @@ set t_Co=16
 set shortmess=filnxtToOc
 
 " Disable showing mode
-set noshowmode
+" set noshowmode
 
 " Fix syntax highlighting
 autocmd BufEnter * :syntax sync fromstart
@@ -145,6 +151,9 @@ set relativenumber
 
 " Don't add newline at end of file
 set nofixeol
+
+" Don't prompt to save buffer if switching
+set hidden
 
 """""""""""""""""""
 """ File type settings
@@ -242,8 +251,8 @@ map <Leader>af :Autoformat<CR>
 
 
 " Switch to open buffers
-map <C-n> :bnext<CR>
-map <C-p> :bprevious<CR>
+map K :bnext<CR>
+map J :bprevious<CR>
 
 
 """"""""""""""""""""
@@ -267,16 +276,6 @@ let g:ycm_show_diagnostics_ui = 0
 " autoclose info split
 autocmd CompleteDone * pclose
 
-"" Doxygen
-" use // comments instead of /* */
-let g:DoxygenToolkit_commentType = "C++"
-
-"" Latex Live Preview
-let g:livepreview_previewer = 'zathura'
-
-"" vim-slime
-let g:slime_target = "tmux"
-
 "" Gutentags
 " Cache all tags in dir
 let g:gutentags_cache_dir = "~/.tags"
@@ -286,10 +285,21 @@ let g:gutentags_cache_dir = "~/.tags"
 let g:syntastic_auto_loc_list = 1
 
 " Check everything except html
-let g:syntastic_mode_map={ 'mode': 'active',
+let g:syntastic_mode_map={ 'mode': 'passive',
                      \ 'active_filetypes': [],
                      \ 'passive_filetypes': ['html'] }
 
+"" Language specific
+
+"" Doxygen
+" use // comments instead of /* */
+"let g:DoxygenToolkit_commentType = "C++"
+"
+""" Latex Live Preview
+"let g:livepreview_previewer = 'zathura'
+"
+""" vim-slime
+"let g:slime_target = "tmux"
 
 "" closetag
-let g:closetag_filenames = "*.html,*.vue"
+"let g:closetag_filenames = "*.html,*.vue"
