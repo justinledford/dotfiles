@@ -17,3 +17,8 @@ alias gda='git add $(git diff --name-only)'
 alias gcm='git commit -m'
 alias gpo='git push origin'
 alias ga='git add'
+alias gp='git push'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
