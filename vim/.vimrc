@@ -40,36 +40,7 @@ Plug 'tpope/vim-fugitive'
 " Edit 'surroundings'
 Plug 'tpope/vim-surround'
 
-
-"" Language specific
-" Generate doxygen comment snippets
-"Plug 'vim-scripts/DoxygenToolkit.vim'
-
-" Send code to REPL in a tmux pane
-"Plug 'jpalardy/vim-slime'
-
-" Latex live preview
-"Plug 'xuhdev/vim-latex-live-preview'
-
-" Markdown live preview
-"Plug 'suan/vim-instant-markdown'
-
-"" HTML
-" Auto close html tags
-"Plug 'alvan/vim-closetag'
-""" Highlight html tags
-"Plug 'gregsexton/MatchTag'
-
-" Vue.js syntax highlighting
-"Plug 'posva/vim-vue'
-
-" Run external formatters/linters on buffer
-"Plug 'Chiel92/vim-autoformat'
-
-"Plug 'elixir-lang/vim-elixir'
-
 call plug#end()
-
 
 """"""""""""""""""""
 """ vim config
@@ -84,10 +55,10 @@ set number
 " Enable auto indent by filetype
 filetype plugin indent on
 
-" Set Tab key to insert 4 spaces
+" Set Tab key to insert 2 spaces
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 
 " Disable modelines
 set nomodeline
@@ -154,18 +125,6 @@ set nofixeol
 
 " Don't prompt to save buffer if switching
 set hidden
-
-"""""""""""""""""""
-""" File type settings
-"""""""""""""""""""
-
-" HTML: 2 spaces for indentation
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
-autocmd FileType xml setlocal shiftwidth=2 tabstop=2
-autocmd FileType vue setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
-
 
 """"""""""""""""""""
 """ Theme
@@ -246,14 +205,9 @@ map <Leader>rt :retab<cr>
 "" Hit enter to clear search highlighting
 nnoremap <CR> :noh<CR><CR>
 
-"" Autoformat
-map <Leader>af :Autoformat<CR>
-
-
 " Switch to open buffers
 map K :bnext<CR>
 map J :bprevious<CR>
-
 
 """"""""""""""""""""
 """ Plugins config
@@ -268,7 +222,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 1
 " Completion in string
 let g:ycm_complete_in_strings = 1
-let g:ycm_path_to_python_interpreter = "/usr/bin/python"
+let g:ycm_path_to_python_interpreter = "/usr/bin/python3"
 " Auto load conf file
 let g:ycm_confirm_extra_conf = 0
 " Disable diagnostics UI for compatibility with Syntastic
@@ -281,25 +235,16 @@ autocmd CompleteDone * pclose
 let g:gutentags_cache_dir = "~/.tags"
 
 "" Syntastic
-" Auto close when no errors, auto open when errors
-let g:syntastic_auto_loc_list = 1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Check everything except html
 let g:syntastic_mode_map={ 'mode': 'passive',
                      \ 'active_filetypes': [],
                      \ 'passive_filetypes': ['html'] }
-
-"" Language specific
-
-"" Doxygen
-" use // comments instead of /* */
-"let g:DoxygenToolkit_commentType = "C++"
-"
-""" Latex Live Preview
-"let g:livepreview_previewer = 'zathura'
-"
-""" vim-slime
-"let g:slime_target = "tmux"
-
-"" closetag
-"let g:closetag_filenames = "*.html,*.vue"
