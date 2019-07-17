@@ -57,7 +57,7 @@
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>Luxi Serif</name>
+      <name>DejaVu Sans Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -66,7 +66,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
-      <name>Luxi Serif</name>
+      <name>DejaVu Sans Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -75,7 +75,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>Luxi Serif</name>
+      <name>DejaVu Sans Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -84,7 +84,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>Luxi Serif</name>
+      <name>DejaVu Sans Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -93,7 +93,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>Luxi Serif</name>
+      <name>DejaVu Sans Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -102,7 +102,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>Luxi Serif</name>
+      <name>DejaVu Sans Mono</name>
       <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -120,7 +120,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>4</number>
+    <number>7</number>
     <firstdesk>1</firstdesk>
     <names>
       <!-- set names up here if you want to, like this:
@@ -215,6 +215,24 @@
         <wrap>no</wrap>
       </action>
     </keybind>
+    <keybind key="S-W-5">
+      <action name="SendToDesktop">
+        <to>5</to>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-W-6">
+      <action name="SendToDesktop">
+        <to>6</to>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-W-7">
+      <action name="SendToDesktop">
+        <to>7</to>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
     <!-- Go to desktop -->
     <keybind key="W-1">
       <action name="GoToDesktop">
@@ -236,6 +254,21 @@
         <to>4</to>
       </action>
     </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop">
+        <to>5</to>
+      </action>
+    </keybind>
+    <keybind key="W-6">
+      <action name="GoToDesktop">
+        <to>6</to>
+      </action>
+    </keybind>
+    <keybind key="W-7">
+      <action name="GoToDesktop">
+        <to>7</to>
+      </action>
+    </keybind>
     <!-- Close window -->
     <keybind key="W-q">
       <action name="Close"/>
@@ -248,7 +281,7 @@
     <keybind key="W-f">
       <action name="ToggleFullscreen"/>
     </keybind>
-    <!-- Resize windows -->
+    <!-- Resize windows (special) -->
     <keybind key="W-v">
       <action name="ToggleMaximize">
         <direction>Vertical</direction>
@@ -257,6 +290,15 @@
     <keybind key="W-b">
       <action name="ToggleMaximize">
         <direction>Horizontal</direction>
+      </action>
+    </keybind>
+    <!-- Center/resize for ultra wide monitor -->
+    <keybind key="W-c">
+      <action name="MoveResizeTo">
+        <x>512</x>
+        <y>0</y>
+        <width>1536</width>
+        <height>1040</height>
       </action>
     </keybind>
     <!-- Resize windows -->
@@ -373,12 +415,7 @@
     <!-- Keybindings for running applications -->
     <keybind key="W-Return">
       <action name="Execute">
-        <command>urxvt</command>
-      </action>
-    </keybind>
-    <keybind key="W-c">
-      <action name="Execute">
-        <command>chromium</command>
+        <command>st</command>
       </action>
     </keybind>
     <keybind key="W-space">
@@ -386,6 +423,41 @@
         <command>dmenu_run.sh</command>
       </action>
     </keybind>
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>pactl set-sink-volume 0 +1%</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>pactl set-sink-volume 0 -1%</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>pactl set-sink-mute 0 toggle</command>
+      </action>
+    </keybind>
+		<!-- Increase backlight 10% -->
+		<keybind key="XF86MonBrightnessUp">
+			<action name="Execute">
+				<command>xbacklight -inc 10</command>
+			</action>
+		</keybind>
+
+    <!-- Decrease backlight 10% -->
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute">
+	      <command>xbacklight -dec 10</command>
+      </action>
+    </keybind>
+
+    <keybind key="XF86LaunchA">
+      <action name="Execute">
+	      <command>toggle_bar.sh</command>
+      </action>
+    </keybind>
+
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
