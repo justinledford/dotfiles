@@ -23,7 +23,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ## install plugins
 vim -c ":PlugInstall" -c ":qa"
 pushd ~/.vim/plugged/YouCompleteMe
-#python3 install.py --clangd-completer
+python3 install.py --clangd-completer
 popd
 
 # setup tmux
