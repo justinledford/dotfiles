@@ -1,3 +1,7 @@
+""""""""""""""""""""
+""" config
+""""""""""""""""""""
+
 " Turn syntax highlighting on
 syntax on
 
@@ -79,5 +83,89 @@ nnoremap <CR> :noh<CR><CR>
 map K :bnext<CR>
 map J :bprevious<CR>
 
-" TODO: source plugins file
-source ~/.vim/rc/plugins.vimrc
+""""""""""""""""""""
+""" mappings
+""""""""""""""""""""
+
+"" Set leader key to space
+let mapleader=" "
+
+" Switch splits
+map <C-X> <C-W><C-X>
+
+"" Open Netrw listing
+map <Leader>e :Explore<cr>
+
+"" Reload all buffers
+map <Leader>r :checkt<cr>
+
+"" Delete current buffer
+map <Leader>bd :bp\|bd<Space>#<cr>
+
+"" Change all tabs to spaces
+map <Leader>rt :retab<cr>
+
+"" Hit enter to clear search highlighting
+nnoremap <CR> :noh<CR><CR>
+
+" Switch to open buffers
+map K :bnext<CR>
+map J :bprevious<CR>
+
+map <Leader>gt :YcmCompleter GoTo<CR>
+map <Leader>f :YcmCompleter FixIt<CR>
+
+map <Leader>jf :%!jq --indent 4 .<CR>
+
+map <Leader>t :TagbarToggle<CR>
+map <Leader>tj :TagbarOpen j<CR>
+
+" fzf
+map <Leader>o :Files<CR>
+map <Leader>b :Buffers<CR>
+map <Leader>a :Ag<CR>
+
+map <Leader>s :%Subvert/
+
+""""""""""""""""""""
+""" plugins
+""""""""""""""""""""
+
+" Specify directory for plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'ycm-core/YouCompleteMe'
+
+Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'ap/vim-buftabline'
+
+Plug 'vim-syntastic/syntastic'
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+Plug 'tpope/vim-abolish'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'ludovicchabant/vim-gutentags'
+
+Plug 'preservim/tagbar'
+
+Plug 'rhysd/vim-clang-format'
+
+Plug 'psf/black', {'do': 'pip3 install --user black'}
+
+call plug#end()
+
+""""""""""""""""""""
+""" plugin settings
+""""""""""""""""""""
+
+" Auto close autocomplete window
+autocmd CompleteDone * pclose
+let g:ycm_goto_buffer_command = 'split-or-existing-window'
+let g:ycm_global_ycm_extra_conf = ''
