@@ -134,7 +134,7 @@ map <Leader>s :%Subvert/
 " Specify directory for plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
 
 Plug 'christoomey/vim-tmux-navigator'
 
