@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-set -e
+set -xe
 
 # install stuff
 sudo apt -y install \
@@ -31,3 +31,5 @@ TPM_DIR=~/.tmux/plugins/tpm
 [ ! -d "${TPM_DIR}" ] && git clone https://github.com/tmux-plugins/tpm ${TPM_DIR}
 [ -d "/tmp/tmux-1000/default" ] && tmux source ~/.tmux.conf
 ~/.tmux/plugins/tpm/bin/install_plugins
+
+./gnome/setup.sh
