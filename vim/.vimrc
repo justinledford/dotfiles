@@ -155,9 +155,7 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'preservim/tagbar'
 
-Plug 'rhysd/vim-clang-format'
-
-Plug 'psf/black', {'do': 'pip3 install --user black'}
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -169,3 +167,15 @@ call plug#end()
 autocmd CompleteDone * pclose
 let g:ycm_goto_buffer_command = 'split-or-existing-window'
 let g:ycm_global_ycm_extra_conf = ''
+
+let g:ale_linters = {
+\   'cpp': ['clangtidy'],
+\}
+let g:ale_lint_on_save = 1
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['black', 'isort'],
+\   'cpp': ['clang-format'],
+\}
+let g:ale_fix_on_save = 1
