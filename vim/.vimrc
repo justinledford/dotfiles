@@ -28,9 +28,6 @@ set undodir=$HOME/.vim/undo
 set undolevels=1000
 set undoreload=10000
 
-" Change directory to the current buffer when opening files
-set autochdir
-
 " Always show status line
 set laststatus=2
 
