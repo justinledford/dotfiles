@@ -169,9 +169,10 @@ let g:ycm_goto_buffer_command = 'split-or-existing-window'
 let g:ycm_global_ycm_extra_conf = ''
 
 let g:ale_linters = {
+\   'python': ['pylint'],
 \   'cpp': ['clangtidy'],
 \}
-let g:ale_lint_on_save = 1
+let g:ale_virtualtext_cursor = 0
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
