@@ -4,7 +4,7 @@ set -xe
 
 # install stuff
 sudo apt -y install \
-  vim curl git tmux build-essential cmake python3-dev stow universal-ctags \
+  neovim curl git tmux build-essential cmake python3-dev stow universal-ctags \
   google-chrome-stable
 
 # setup bash
@@ -19,11 +19,11 @@ stow vim
 mkdir -p ~/.vim/undo
 
 ## install vim-plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 ## install plugins
-vim -c ":PlugInstall" -c ":qa"
+nvim -c ":PlugInstall" -c ":qa"
 
 # setup tmux
 stow tmux
