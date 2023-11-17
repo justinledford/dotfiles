@@ -25,6 +25,9 @@ vim.opt.hlsearch = true
 -- Set signcolumn always on
 vim.opt.signcolumn = "yes"
 
+-- Show line number for current line
+vim.opt.number = true
+
 -- Show relative line numbers
 vim.opt.relativenumber = true
 
