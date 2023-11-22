@@ -164,39 +164,55 @@ vim.keymap.set(
 ------ plugins
 -------------------
 
-vim.cmd([[
-call plug#begin()
+-- Install packer if its not already
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
 
-Plug 'christoomey/vim-tmux-navigator'
+local packer_bootstrap = ensure_packer()
 
-Plug 'ap/vim-buftabline'
+require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
 
-Plug 'airblade/vim-gitgutter'
+  use 'christoomey/vim-tmux-navigator'
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+  use 'ap/vim-buftabline'
 
-Plug 'tpope/vim-abolish'
+  use 'airblade/vim-gitgutter'
 
-Plug 'tpope/vim-fugitive'
+  use { 'junegunn/fzf', run = 'fzf#install()' }
+  use 'junegunn/fzf.vim'
 
-Plug 'mcchrish/zenbones.nvim', {'tag': 'v2.0.0'}
-Plug 'rktjmp/lush.nvim'
+  use 'tpope/vim-abolish'
 
-Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.6'}
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'rafamadriz/friendly-snippets'
-Plug 'creativenull/efmls-configs-nvim', { 'tag': 'v1.*' }
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'jay-babu/mason-null-ls.nvim'
+  use 'tpope/vim-fugitive'
 
-call plug#end()
-]])
+  use 'mcchrish/zenbones.nvim'
+  use 'rktjmp/lush.nvim'
+
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+  use 'rafamadriz/friendly-snippets'
+  use 'creativenull/efmls-configs-nvim'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'jay-babu/mason-null-ls.nvim'
+
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)
 
 -------------------
 ------ plugin settings
