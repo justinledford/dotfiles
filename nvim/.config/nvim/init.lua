@@ -302,6 +302,6 @@ require "lspconfig".efm.setup {
 -- Format buffer on write
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
-    vim.lsp.buf.formatting()
+    vim.lsp.buf.format()
   end,
 })
