@@ -203,7 +203,6 @@ require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets'
-  use 'creativenull/efmls-configs-nvim'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   use 'jose-elias-alvarez/null-ls.nvim'
@@ -306,18 +305,25 @@ require "lspconfig".efm.setup {
     rootMarkers = {".git/"},
     languages = {
       python = {
-        require('efmls-configs.formatters.black'),
-        require('efmls-configs.formatters.isort'),
-        -- TODO: add no-untyped-def
-        require('efmls-configs.linters.mypy'),
+        {formatCommand = 'black --quiet -', formatStdin = true},
+        {formatCommand = 'isort --quiet -', formatStdin = true},
+        --TODO: get this working
+        {lintCommand = 'mypy --show-column-numbers --disallow-untyped-defs', lintStdin = false},
       }
     }
   }
 }
 
--- Format buffer on write
-vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function()
-    vim.lsp.buf.format()
+local lsp_fmt_group = vim.api.nvim_create_augroup('LspFormattingGroup', {})
+vim.api.nvim_create_autocmd('BufWritePost', {
+  group = lsp_fmt_group,
+  callback = function(ev)
+    local efm = vim.lsp.get_active_clients({ name = 'efm', bufnr = ev.buf })
+
+    if vim.tbl_isempty(efm) then
+      return
+    end
+
+    vim.lsp.buf.format({ name = 'efm' })
   end,
 })
