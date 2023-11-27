@@ -144,7 +144,7 @@ vim.keymap.set(
 vim.keymap.set(
   "n",
   "<Leader>o",
-  ":Files<CR>",
+  ":GFiles<CR>",
   { noremap = true }
 )
 vim.keymap.set(
