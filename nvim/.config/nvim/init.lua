@@ -315,7 +315,7 @@ require "lspconfig".efm.setup {
 }
 
 local lsp_fmt_group = vim.api.nvim_create_augroup('LspFormattingGroup', {})
-vim.api.nvim_create_autocmd('BufWritePost', {
+vim.api.nvim_create_autocmd('BufWritePre', {
   group = lsp_fmt_group,
   callback = function(ev)
     for _, lsp in ipairs({"clangd", "efm"}) do
