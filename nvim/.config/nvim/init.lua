@@ -112,13 +112,6 @@ vim.keymap.set(
   { noremap = true }
 )
 
--- ycm
-vim.keymap.set(
-  "n",
-  "<Leader>gt",
-  ":YcmCompleter GoTo<CR>",
-  { noremap = true }
-)
 vim.keymap.set(
   "n",
   "<Leader>ca",
@@ -159,6 +152,14 @@ vim.keymap.set(
   ":Ag<CR>",
   { noremap = true }
 )
+
+vim.keymap.set(
+  "n",
+  "<Leader>f",
+  vim.lsp.buf.format,
+  { noremap = true }
+)
+
 
 -------------------
 ------ plugins
@@ -313,16 +314,3 @@ require "lspconfig".efm.setup {
     }
   }
 }
-
-local lsp_fmt_group = vim.api.nvim_create_augroup('LspFormattingGroup', {})
-vim.api.nvim_create_autocmd('BufWritePre', {
-  group = lsp_fmt_group,
-  callback = function(ev)
-    for _, lsp in ipairs({"clangd", "efm"}) do
-      local client = vim.lsp.get_active_clients({ name = lsp, bufnr = ev.buf })
-      if not vim.tbl_isempty(client) then
-        vim.lsp.buf.format({ name = lsp })
-      end
-    end
-  end,
-})
