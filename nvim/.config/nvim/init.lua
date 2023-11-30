@@ -248,6 +248,7 @@ require('mason-lspconfig').setup({
     'clangd',
     'efm',
     'pylsp',
+    'verible',
   }
 })
 require("mason-null-ls").setup({
@@ -313,9 +314,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require'lspconfig'.clangd.setup {
   capabilities = capabilities,
 }
-require'lspconfig'.pylsp.setup {
-  capabilities = capabilities,
-}
 require "lspconfig".efm.setup {
   init_options = {documentFormatting = true},
   capabilities = capabilities,
@@ -330,4 +328,10 @@ require "lspconfig".efm.setup {
       }
     }
   }
+}
+require'lspconfig'.pylsp.setup {
+  capabilities = capabilities,
+}
+require'lspconfig'.verible.setup {
+  capabilities = capabilities,
 }
