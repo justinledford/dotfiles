@@ -58,3 +58,6 @@ gsettings set \
 gsettings set \
   org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${UUID}/ \
   background-color 'rgb(238,238,236)'
+
+# Force light mode in GUIs
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
