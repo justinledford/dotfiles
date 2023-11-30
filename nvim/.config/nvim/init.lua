@@ -188,7 +188,7 @@ require('packer').startup(function(use)
 
   use 'airblade/vim-gitgutter'
 
-  use { 'junegunn/fzf', run = 'fzf#install()' }
+  use { 'junegunn/fzf', run = ":call fzf#install()" }
   use 'junegunn/fzf.vim'
 
   use 'tpope/vim-abolish'
