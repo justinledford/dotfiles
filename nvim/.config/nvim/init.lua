@@ -9,7 +9,7 @@ vim.opt.shiftwidth = 2
 
 -- Keep undo history
 vim.opt.undofile = true
-vim.opt.undodir = "$HOME/.nvim/undo"
+vim.opt.undodir = vim.fn.expand('~/.nvim/undo')
 vim.opt.undolevels = 1000
 vim.opt.undoreload = 10000
 
