@@ -43,6 +43,11 @@ vim.g.netrw_liststyle = 3
 -- Hide netrw banner
 vim.g.netrw_banner = 0
 
+vim.diagnostic.config({
+  virtual_text = false,
+  underline = false,
+})
+
 -- Set leader key to space
 vim.g.mapleader = " "
 
@@ -119,17 +124,10 @@ vim.keymap.set(
   { noremap = true }
 )
 
--- tagbar
 vim.keymap.set(
   "n",
   "<Leader>t",
-  ":TagbarToggle<CR>",
-  { noremap = true }
-)
-vim.keymap.set(
-  "n",
-  "<Leader>tj",
-  ":TagbarOpen j<CR>",
+  ":TroubleToggle<CR>",
   { noremap = true }
 )
 
@@ -159,7 +157,6 @@ vim.keymap.set(
   vim.lsp.buf.format,
   { noremap = true }
 )
-
 
 -------------------
 ------ plugins
@@ -208,6 +205,26 @@ require('packer').startup(function(use)
   use 'williamboman/mason-lspconfig.nvim'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'jay-babu/mason-null-ls.nvim'
+
+  use {
+    'folke/trouble.nvim',
+    config = function()
+      require('trouble').setup {
+        -- don't use icons
+        icons = false,
+        fold_open = "v",
+        fold_closed = ">",
+        indent_lines = false,
+        signs = {
+            error = "error",
+            warning = "warn",
+            hint = "hint",
+            information = "info"
+        },
+        use_diagnostic_signs = false
+      }
+    end
+  }
 
   if packer_bootstrap then
     require('packer').sync()
