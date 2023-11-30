@@ -158,6 +158,13 @@ vim.keymap.set(
   { noremap = true }
 )
 
+vim.keymap.set(
+  "n",
+  "<Leader>d",
+  ":Gvdiffsplit ",
+  { noremap = true }
+)
+
 -------------------
 ------ plugins
 -------------------
