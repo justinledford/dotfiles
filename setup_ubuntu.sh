@@ -5,6 +5,7 @@ set -xe
 # install stuff
 sudo apt -y install \
   neovim curl git tmux build-essential cmake python3-dev stow universal-ctags \
+  python3-venv python3-virtualenvwrapper \
   google-chrome-stable
 
 # setup bash
