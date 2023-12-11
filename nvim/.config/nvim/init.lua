@@ -75,7 +75,7 @@ vim.keymap.set(
 vim.keymap.set(
   "n",
   "<Leader>bd",
-  ":bp\\|bd<Space>#<cr>",
+  ":bp|bd<Space>#<cr>",
   { noremap = true }
 )
 
