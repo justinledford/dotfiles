@@ -61,3 +61,5 @@ gsettings set \
 
 # Force light mode in GUIs
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+
+gsettings set org.gnome.desktop.interface clock-format '12h'
