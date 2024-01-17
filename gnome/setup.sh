@@ -2,6 +2,9 @@
 
 set -xe
 
+# Set fixed number of workspaces
+gsettings set org.gnome.mutter dynamic-workspaces false
+
 # Extend number of workspaces and set keyboard shortcuts
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 9
 
@@ -19,24 +22,29 @@ for i in {1..9}; do
     "['<Shift><Super>${SYMBOLS[${i}]}']"
 done
 
+if gsettings list-schemas | grep dash-to-dock; then
 # Remove shortcuts from dash to dock which conflict with the above shortcuts
-for i in {1..9}; do
-  gsettings set org.gnome.shell.extensions.dash-to-dock "app-hotkey-${i}" "['']"
-done
+  for i in {1..9}; do
+    gsettings set org.gnome.shell.extensions.dash-to-dock "app-hotkey-${i}" "['']"
+  done
+
+  # Show only windows from the current workspace in the dock
+  gsettings set \
+    org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
+fi
 
 # Remove annoying animation when switching workspaces
 gsettings set org.gnome.desktop.interface enable-animations false
-
-# Show only windows from the current workspace in the dock
-gsettings set \
-  org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
 
 # Set dock favorites
 gsettings set \
   org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'google-chrome.desktop']"
 
 # Misc shortcuts
+
+# TODO: In some versions a custom-keybinding seems to be needed
 gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>Return']"
+
 gsettings set org.gnome.settings-daemon.plugins.media-keys www "['<Super>space']"
 gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super>j']"
 gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Super>k']"
