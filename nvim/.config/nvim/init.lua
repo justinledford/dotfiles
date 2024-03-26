@@ -37,12 +37,6 @@ vim.opt.fixeol = false
 -- Don't prompt to save buffer if switching
 vim.opt.hidden = true
 
--- Set netrw to list style to tree style
-vim.g.netrw_liststyle = 3
-
--- Hide netrw banner
-vim.g.netrw_banner = 0
-
 vim.diagnostic.config({
   virtual_text = false,
   underline = false,
@@ -67,7 +61,7 @@ vim.keymap.set(
 vim.keymap.set(
   "n",
   "<leader>e",
-  ":Explore<cr>",
+  ":Oil<cr>",
   { noremap = true }
 )
 
@@ -127,7 +121,7 @@ vim.keymap.set(
 vim.keymap.set(
   "n",
   "<Leader>t",
-  ":TroubleToggle<CR>",
+  ":TroubleToggle document_diagnostics<CR>",
   { noremap = true }
 )
 
@@ -160,10 +154,18 @@ vim.keymap.set(
 
 vim.keymap.set(
   "n",
-  "<Leader>d",
+  "<Leader>gd",
   ":Gvdiffsplit ",
   { noremap = true }
 )
+
+vim.keymap.set(
+  "n",
+  "<Leader>d",
+  ":vert diffsplit ",
+  { noremap = true }
+)
+
 
 -------------------
 ------ plugins
@@ -233,6 +235,13 @@ require('packer').startup(function(use)
     end
   }
 
+  use {
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup()
+    end
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
@@ -263,6 +272,9 @@ require("mason-null-ls").setup({
       'black',
       'isort',
       'mypy',
+      'shfmt',
+      'shellcheck',
+      'buildifier',
     }
 })
 
@@ -332,6 +344,14 @@ require "lspconfig".efm.setup {
         {formatCommand = 'isort --quiet -', formatStdin = true},
         --TODO: get this working
         {lintCommand = 'mypy --show-column-numbers --disallow-untyped-defs', lintStdin = false},
+      },
+      sh = {
+        {formatCommand = 'shfmt -i 2 -', formatStdin = true},
+        --TODO: get this working
+        {lintCommand = 'shellcheck -', lintStdin = true},
+      },
+      bzl = {
+        {formatCommand = 'buildifier --type=build', formatStdin = true},
       }
     }
   }
@@ -342,3 +362,18 @@ require'lspconfig'.pylsp.setup {
 require'lspconfig'.verible.setup {
   capabilities = capabilities,
 }
+
+-------------------
+------ filetype specific stuff
+-------------------
+
+local function setup_c_filetype()
+    vim.opt_local.expandtab = false
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "c",
+    callback = function()
+      vim.bo.expandtab = false
+    end,
+})
