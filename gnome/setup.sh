@@ -8,6 +8,35 @@ gsettings set org.gnome.mutter dynamic-workspaces false
 # Extend number of workspaces and set keyboard shortcuts
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 9
 
+if gsettings list-schemas | grep dash-to-dock; then
+# Remove shortcuts from dash to dock which conflict with following shortcuts
+  for i in {1..9}; do
+    gsettings set org.gnome.shell.extensions.dash-to-dock "app-hotkey-${i}" "['']"
+  done
+
+  # Show only windows from the current workspace in the dock
+  gsettings set \
+    org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
+fi
+if gsettings list-schemas | grep dash-to-panel; then
+# Remove shortcuts from dash to panel which conflict with following shortcuts
+  for i in {1..9}; do
+    gsettings set org.gnome.shell.extensions.dash-to-panel "app-hotkey-${i}" "['']"
+  done
+
+  # Show only windows from the current workspace in the dock
+  gsettings set \
+    org.gnome.shell.extensions.dash-to-panel isolate-workspaces true
+fi
+
+for i in {1..9}; do
+  gsettings set org.gnome.shell.keybindings switch-to-application-${i}  "['']"
+done
+
+# Show only windows from the current workspace in the dock
+gsettings set \
+  org.gnome.shell.extensions.dash-to-panel isolate-workspaces true
+
 for i in {1..9}; do
   gsettings set org.gnome.desktop.wm.keybindings "switch-to-workspace-${i}" \
     "['<Super>${i}']"
@@ -22,16 +51,6 @@ for i in {1..9}; do
     "['<Shift><Super>${SYMBOLS[${i}]}']"
 done
 
-if gsettings list-schemas | grep dash-to-dock; then
-# Remove shortcuts from dash to dock which conflict with the above shortcuts
-  for i in {1..9}; do
-    gsettings set org.gnome.shell.extensions.dash-to-dock "app-hotkey-${i}" "['']"
-  done
-
-  # Show only windows from the current workspace in the dock
-  gsettings set \
-    org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
-fi
 
 # Remove annoying animation when switching workspaces
 gsettings set org.gnome.desktop.interface enable-animations false
@@ -43,7 +62,7 @@ gsettings set \
 # Misc shortcuts
 
 # TODO: In some versions a custom-keybinding seems to be needed
-gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>Return']"
+#gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>Return']"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys www "['<Super>space']"
 gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super>j']"
@@ -54,7 +73,7 @@ gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 UUID=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')
 gsettings set \
   org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${UUID}/ \
-  font 'Ubuntu Mono 11'
+  font 'Ubuntu Mono 9'
 
 # set to "Tango light"
 gsettings set \
