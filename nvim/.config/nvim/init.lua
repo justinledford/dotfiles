@@ -331,6 +331,7 @@ cmp.setup {
 -- Configure each LSP
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require'lspconfig'.clangd.setup {
+  cmd = { 'clangd', '--background-index', '--clang-tidy'},
   capabilities = capabilities,
 }
 require "lspconfig".efm.setup {
