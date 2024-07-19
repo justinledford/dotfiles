@@ -15,16 +15,15 @@ sudo apt -y install \
 diff ~/.bashrc /etc/skel/.bashrc && rm ~/.bashrc
 stow bash
 
-# setup vim
-stow vim
-mkdir -p ~/.vim/undo
+# setup nvim
+stow nvim
 
-## install vim-plug
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+## install packer
+git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 ## install plugins
-nvim -c ":PlugInstall" -c ":qa"
+nvim -c ":PackerInstall" -c ":qa"
 
 # setup tmux
 stow tmux
