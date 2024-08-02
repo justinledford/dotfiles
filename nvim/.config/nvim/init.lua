@@ -264,6 +264,7 @@ require('mason-lspconfig').setup({
     'clangd',
     'efm',
     'pylsp',
+    'tsserver',
     'verible',
   }
 })
@@ -361,6 +362,9 @@ require'lspconfig'.pylsp.setup {
   capabilities = capabilities,
 }
 require'lspconfig'.verible.setup {
+  capabilities = capabilities,
+}
+require'lspconfig'.tsserver.setup {
   capabilities = capabilities,
 }
 
