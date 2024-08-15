@@ -161,6 +161,13 @@ vim.keymap.set(
 
 vim.keymap.set(
   "n",
+  "<Leader>g3",
+  ":Gdiffsplit!<CR>",
+  { noremap = true }
+)
+
+vim.keymap.set(
+  "n",
   "<Leader>d",
   ":vert diffsplit ",
   { noremap = true }
