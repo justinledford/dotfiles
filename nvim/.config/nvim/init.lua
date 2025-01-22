@@ -270,6 +270,7 @@ require('mason-lspconfig').setup({
   ensure_installed = {
     'clangd',
     'efm',
+    'lua_ls',
     'pylsp',
     'tsserver',
     'verible',
@@ -365,6 +366,55 @@ require "lspconfig".efm.setup {
     }
   }
 }
+require'lspconfig'.lua_ls.setup {
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        globals = {
+          'vim',
+          -- Add other globals used in Neovim plugin development
+          --'describe',
+          --'it',
+          --'before_each',
+          --'after_each',
+          --'pending',
+          --'teardown',
+        },
+      },
+      workspace = {
+        library = {
+          vim.fn.expand('$VIMRUNTIME/lua'),
+          vim.fn.expand('$VIMRUNTIME/lua/vim/lsp'),
+          -- Add any other paths you want lua_ls to index
+          -- For example, your plugin directory:
+          -- vim.fn.expand('~/.local/share/nvim/site/pack/packer/start/*/lua'),
+        },
+        -- If you want to ignore certain files/directories
+        ignoreDir = {
+          "~/.local/share/nvim/mason",
+          ".git",
+        },
+        -- Adjust these settings based on your needs
+        maxPreload = 2000,
+        preloadFileSize = 1000,
+      },
+      completion = {
+        callSnippet = "Replace",
+        -- Enable method signature help
+        enable = true,
+      },
+      telemetry = {
+        -- Disable telemetry
+        enable = false,
+      },
+    },
+  },
+}
 require'lspconfig'.pylsp.setup {
   capabilities = capabilities,
 }
@@ -388,4 +438,36 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
       vim.bo.expandtab = false
     end,
+})
+
+-------------------
+------ custom plugin stuff
+-------------------
+
+-- Add command to use selected text
+vim.api.nvim_create_user_command('IA', function(opts)
+    require('ia').make_request_visual()
+end, {
+    range = true
+})
+
+vim.keymap.set('v', '<Leader>ia', ':IA<CR>')
+
+vim.api.nvim_create_user_command('ReloadPlugin', function(opts)
+    local plugin_name = opts.args
+    package.loaded[plugin_name] = nil
+    require(plugin_name)
+    vim.notify('Reloaded ' .. plugin_name)
+end, {
+    nargs = 1,
+    complete = function(ArgLead, CmdLine, CursorPos)
+        -- Basic completion for loaded modules
+        local modules = {}
+        for module, _ in pairs(package.loaded) do
+            if module:match(ArgLead) then
+                table.insert(modules, module)
+            end
+        end
+        return modules
+    end
 })
