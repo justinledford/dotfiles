@@ -1,0 +1,25 @@
+snippet cct
+  cc_test(
+     name = "${1}_test",
+     srcs = ["${1}_test.cc"],
+     deps = [
+         ":${1}",
+         "@googletest//:gtest_main",
+     ],
+  )
+
+snippet ccl
+  cc_library(
+    name = "${1}",
+    hdrs = ["${1}.h"],
+    srcs = ["${1}.cc"],
+  )
+
+snippet ccli
+  cc_library(
+    name = "${1}",
+    hdrs = [
+      "${1}.h"
+      "${1}.inl"
+    ],
+  )

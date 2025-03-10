@@ -1,0 +1,15 @@
+snippet print "print container with a range-based loop on a single line"
+  for (auto& e : ${1}) {
+    std::cout << e << " ";
+  }
+  std::cout << std::endl;
+
+snippet println "print container with a range-based loop on a multiple lines"
+  for (auto& e : ${1}) {
+    std::cout << e << std::endl;
+  }
+
+snippet fors "
+  for (size_t i = 0; i < ${1}.size(); ++i) {
+    ${0}
+  }
