@@ -137,6 +137,14 @@ vim.keymap.set(
   { noremap = true }
 )
 
+-- write unit tests
+vim.keymap.set(
+  "v",
+  "<Leader>pt",
+  ":PrtUnitTests <CR>",
+  { noremap = true }
+)
+
 vim.keymap.set({ "i" }, "<Tab>", function()
   require("luasnip").jump(1)
 end, { silent = true })
@@ -146,8 +154,8 @@ vim.keymap.set({ "i" }, "<S-Tab>", function()
 end, { silent = true })
 
 vim.keymap.set(
- "n",
- "<Leader>gt",
- function()
-   require("config.funcs").create_test_file()
- end)
+  "n",
+  "<Leader>gt",
+  function()
+    require("config.funcs").create_test_file()
+  end)

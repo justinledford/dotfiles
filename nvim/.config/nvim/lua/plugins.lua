@@ -237,7 +237,23 @@ return {
             ]]
             local model_obj = prt.get_model "command"
             prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
-          end
+          end,
+          UnitTests = function(prt, params)
+            local template = [[
+            I have the following code from {{filename}}:
+
+            ```{{filetype}}
+            {{selection}}
+            ```
+
+            Please respond by writing unit tests for the code above. If the code
+            is c++, then write gtest tests, if the code is python, write pytest tests.
+            Respond only with the code.
+            ]]
+            local model_obj = prt.get_model "command"
+            prt.logger.info("Creating unit tests for selection with model: " .. model_obj.name)
+            prt.Prompt(params, prt.ui.Target.enew, model_obj, nil, template)
+          end,
         },
       }
     end,
