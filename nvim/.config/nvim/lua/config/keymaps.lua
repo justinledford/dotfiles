@@ -89,13 +89,6 @@ vim.keymap.set(
   ":Buffers<CR>",
   { noremap = true }
 )
--- fzf file contents
-vim.keymap.set(
-  "n",
-  "<Leader>a",
-  ":Ag<CR>",
-  { noremap = true }
-)
 
 -- format
 vim.keymap.set(

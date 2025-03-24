@@ -258,4 +258,53 @@ return {
       }
     end,
   },
+
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    version = false,
+    build = "make",
+    config = function()
+      require("avante").setup({
+        claude = {
+          disable_tools = true,
+        },
+        highlights = {
+          diff = {
+            current = "NvimLightRed",
+            incoming = "NvimLightGreen",
+          },
+        },
+      })
+
+      vim.api.nvim_set_hl(0, "AvanteTitle", {bg = "NONE"})
+      vim.api.nvim_set_hl(0, "AvanteReversedTitle", {fg = "NONE"})
+      vim.api.nvim_set_hl(0, "AvanteSubtitle", {bg = "NONE"})
+      vim.api.nvim_set_hl(0, "AvanteReversedSubtitle", {fg = "NONE"})
+      vim.api.nvim_set_hl(0, "AvanteThirdTitle", {bg = "NONE"})
+      vim.api.nvim_set_hl(0, "AvanteReversedThirdTitle", {fg = "NONE"})
+
+      vim.api.nvim_set_hl(0, "AvanteConflictCurrent", {bg = "NvimLightRed"})
+      vim.api.nvim_set_hl(0, "AvanteConflictCurrentLabel", {bg = "NONE"})
+      vim.api.nvim_set_hl(0, "AvanteConflictIncoming", {bg = "NvimLightGreen"})
+      vim.api.nvim_set_hl(0, "AvanteConflictIncomingLabel", {bg = "NONE"})
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "hrsh7th/nvim-cmp",
+      "ibhagwan/fzf-lua",
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+
+  },
 }
