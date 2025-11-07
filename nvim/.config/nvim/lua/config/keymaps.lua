@@ -122,19 +122,11 @@ vim.keymap.set(
   { noremap = true }
 )
 
--- write a to string function
+-- open vertical help split
 vim.keymap.set(
-  "v",
-  "<Leader>ps",
-  ":PrtToString <CR>",
-  { noremap = true }
-)
-
--- write unit tests
-vim.keymap.set(
-  "v",
-  "<Leader>pt",
-  ":PrtUnitTests <CR>",
+  "n",
+  "<Leader>vh",
+  ":vert help ",
   { noremap = true }
 )
 

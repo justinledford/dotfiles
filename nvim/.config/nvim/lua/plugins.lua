@@ -11,6 +11,7 @@ return {
         colorscheme zenwritten
       ]])
     end,
+    dependencies = "rktjmp/lush.nvim",
   },
 
   -- enable nvim+tmux integration
@@ -80,11 +81,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-      lspconfig.lua_ls.setup({
+      vim.lsp.config('*', {
         capabilities = capabilities,
+      })
+
+      vim.lsp.config.lua_ls = {
         settings = {
           Lua = {
             runtime = {
@@ -103,18 +105,16 @@ return {
             },
           },
         },
-      })
+      }
 
-      lspconfig.clangd.setup({
+      vim.lsp.config.clangd = {
         cmd = { 'clangd', '--background-index', '--clang-tidy' },
-        capabilities = capabilities,
-      })
+      }
 
-      lspconfig.efm.setup {
+      vim.lsp.config.efm = {
         init_options = { documentFormatting = true },
         filetypes = { "python", "sh", "bzl" },
         rootMarkers = { ".git/" },
-        capabilities = capabilities,
         settings = {
           languages = {
             python = {
@@ -140,14 +140,6 @@ return {
           }
         }
       }
-
-      lspconfig.pylsp.setup({
-        capabilities = capabilities,
-      })
-
-      lspconfig.verible.setup({
-        capabilities = capabilities,
-      })
     end,
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -175,7 +167,7 @@ return {
   -- package manager for LSP servers, linters, etc
   {
     "williamboman/mason.nvim",
-    config = true,
+    opts = {}
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -186,7 +178,8 @@ return {
         'lua_ls',
         'pylsp',
         'verible',
-      }
+      },
+      automatic_enable = true
     },
     dependencies = {
       "williamboman/mason.nvim",
@@ -210,101 +203,5 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
     }
-  },
-
-  -- LLM
-  {
-    "frankroeder/parrot.nvim",
-    dependencies = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
-    config = function()
-      require("parrot").setup {
-        providers = {
-          anthropic = {
-            api_key = os.getenv("ANTHROPIC_API_KEY"),
-          }
-        },
-        hooks = {
-          ToString = function(prt, params)
-            local template = [[
-            I have the following code:
-
-            ```{{filetype}}
-            {{selection}}
-            ```
-
-            Please write a to_string / repr function.
-            Respond just with the snippet of code that should be inserted."
-            ]]
-            local model_obj = prt.get_model "command"
-            prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
-          end,
-          UnitTests = function(prt, params)
-            local template = [[
-            I have the following code from {{filename}}:
-
-            ```{{filetype}}
-            {{selection}}
-            ```
-
-            Please respond by writing unit tests for the code above. If the code
-            is c++, then write gtest tests, if the code is python, write pytest tests.
-            Respond only with the code.
-            ]]
-            local model_obj = prt.get_model "command"
-            prt.logger.info("Creating unit tests for selection with model: " .. model_obj.name)
-            prt.Prompt(params, prt.ui.Target.enew, model_obj, nil, template)
-          end,
-        },
-      }
-    end,
-  },
-
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    version = false,
-    build = "make",
-    config = function()
-      require("avante").setup({
-        claude = {
-          disable_tools = true,
-        },
-        highlights = {
-          diff = {
-            current = "NvimLightRed",
-            incoming = "NvimLightGreen",
-          },
-        },
-      })
-
-      vim.api.nvim_set_hl(0, "AvanteTitle", {bg = "NONE"})
-      vim.api.nvim_set_hl(0, "AvanteReversedTitle", {fg = "NONE"})
-      vim.api.nvim_set_hl(0, "AvanteSubtitle", {bg = "NONE"})
-      vim.api.nvim_set_hl(0, "AvanteReversedSubtitle", {fg = "NONE"})
-      vim.api.nvim_set_hl(0, "AvanteThirdTitle", {bg = "NONE"})
-      vim.api.nvim_set_hl(0, "AvanteReversedThirdTitle", {fg = "NONE"})
-
-      vim.api.nvim_set_hl(0, "AvanteConflictCurrent", {bg = "NvimLightRed"})
-      vim.api.nvim_set_hl(0, "AvanteConflictCurrentLabel", {bg = "NONE"})
-      vim.api.nvim_set_hl(0, "AvanteConflictIncoming", {bg = "NvimLightGreen"})
-      vim.api.nvim_set_hl(0, "AvanteConflictIncomingLabel", {bg = "NONE"})
-    end,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "hrsh7th/nvim-cmp",
-      "ibhagwan/fzf-lua",
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
-    },
-
   },
 }
