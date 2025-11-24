@@ -51,14 +51,6 @@ vim.keymap.set(
   { noremap = true }
 )
 
--- Reload all buffers
-vim.keymap.set(
-  "n",
-  "<Leader>r",
-  ":checkt<cr>",
-  { noremap = true }
-)
-
 -- Apply fix
 vim.keymap.set(
   "n",
@@ -144,3 +136,9 @@ vim.keymap.set(
   function()
     require("config.funcs").create_test_file()
   end)
+
+-- show references
+vim.keymap.set(
+  "n",
+  "<Leader>r",
+  vim.lsp.buf.references)
