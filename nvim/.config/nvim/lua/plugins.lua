@@ -178,6 +178,7 @@ return {
         'lua_ls',
         'pylsp',
         'verible',
+        'vtsls',
       },
       automatic_enable = true
     },
