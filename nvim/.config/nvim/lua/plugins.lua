@@ -176,6 +176,7 @@ return {
         'clangd',
         'efm',
         'lua_ls',
+        'neocmake',
         'pylsp',
         'verible',
         'vtsls',
