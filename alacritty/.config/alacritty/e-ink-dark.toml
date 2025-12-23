@@ -1,0 +1,32 @@
+# Colors (E-Ink Dark)
+
+# Default colors
+[colors.primary]
+background = '#333333'
+foreground = '#C2C2C2'
+
+[colors.selection]
+text = 'CellForeground'
+background = '#545454'
+
+# Normal colors
+[colors.normal]
+black   = '#333333'
+red     = '#CCCCCC'
+green   = '#686868'
+yellow  = '#7C7C7C'
+blue    = '#868686'
+magenta = '#5E5E5E'
+cyan    = '#B8B8B8'
+white   = '#A4A4A4'
+
+# Bright colors
+[colors.bright]
+black   = '#A4A4A4'
+red     = '#CCCCCC'
+green   = '#686868'
+yellow  = '#7C7C7C'
+blue    = '#868686'
+magenta = '#5E5E5E'
+cyan    = '#B8B8B8'
+white   = '#868686'
