@@ -90,6 +90,14 @@ vim.keymap.set(
   { noremap = true }
 )
 
+-- open vertical git status
+vim.keymap.set(
+  "n",
+  "<Leader>gs",
+  ":vert Git<CR>",
+  { noremap = true }
+)
+
 -- open vertical git diff split
 vim.keymap.set(
   "n",
