@@ -1,17 +1,13 @@
 return {
   -- colorscheme
   {
-    "mcchrish/zenbones.nvim",
-    lazy = false,
+    "e-ink-colorscheme/e-ink.nvim",
     priority = 1000,
     config = function()
-      vim.cmd([[
-        set termguicolors
-        set background=light
-        colorscheme zenwritten
-      ]])
-    end,
-    dependencies = "rktjmp/lush.nvim",
+      require("e-ink").setup()
+      vim.cmd.colorscheme "e-ink"
+      vim.opt.background = "dark"
+    end
   },
 
   -- enable nvim+tmux integration
