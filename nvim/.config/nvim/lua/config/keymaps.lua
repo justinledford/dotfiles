@@ -70,15 +70,22 @@ vim.keymap.set(
 -- fzf git files
 vim.keymap.set(
   "n",
-  "<Leader>o",
-  ":GFiles<CR>",
+  "<Leader>fg",
+  ":FzfLua git_files<CR>",
   { noremap = true }
 )
 -- fzf buffers
 vim.keymap.set(
   "n",
-  "<Leader>b",
-  ":Buffers<CR>",
+  "<Leader>fb",
+  ":FzfLua buffers<CR>",
+  { noremap = true }
+)
+-- fzf tabs
+vim.keymap.set(
+  "n",
+  "<Leader>ft",
+  ":FzfLua tabs<CR>",
   { noremap = true }
 )
 

@@ -27,7 +27,12 @@ return {
     "junegunn/fzf",
     build = ":call fzf#install()",
   },
-  "junegunn/fzf.vim",
+
+  {
+    "ibhagwan/fzf-lua",
+    opts = {}
+  },
+
 
   -- diagnostics
   {
