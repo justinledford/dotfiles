@@ -40,6 +40,11 @@ return {
     "stevearc/oil.nvim",
     config = true,
     lazy = false,
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+    },
   },
 
   -- completion engine
