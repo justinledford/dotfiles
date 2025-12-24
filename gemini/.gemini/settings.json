@@ -6,9 +6,20 @@
   },
   "general": {
     "previewFeatures": true,
-    "disableAutoUpdate": true
+    "preferredEditor": "nvim",
+    "disableAutoUpdate": true,
+    "disableUpdateNag": true
   },
   "ui": {
-    "theme": "ANSI"
+    "theme": "ANSI",
+    "hideTips": true,
+    "hideBanner": true,
+    "footer": {
+      "hideContextPercentage": false
+    },
+    "showMemoryUsage": true,
+    "customWittyPhrases": [
+      "thinking..."
+    ]
   }
 }
