@@ -1,3 +1,5 @@
+# reference at https://alacritty.org/config-alacritty.html
+
 [general]
 import = ["~/.config/alacritty/e-ink-dark.toml"]
 
@@ -29,3 +31,6 @@ save_to_clipboard = true
 [cursor]
 style = { shape = "Block", blinking = "On" }
 vi_mode_style = { shape = "Block", blinking = "On" }
+
+[keyboard]
+bindings = []
