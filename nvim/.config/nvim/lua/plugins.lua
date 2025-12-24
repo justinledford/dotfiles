@@ -109,7 +109,7 @@ return {
 
       vim.lsp.config.efm = {
         init_options = { documentFormatting = true },
-        filetypes = { "python", "sh", "bzl" },
+        filetypes = { "python", "sh", "bzl", "json" },
         rootMarkers = { ".git/" },
         settings = {
           languages = {
@@ -132,7 +132,10 @@ return {
             },
             bzl = {
               { formatCommand = 'buildifier --type=build', formatStdin = true },
-            }
+            },
+            json = {
+              { formatCommand = 'jq .', formatStdin = true },
+            },
           }
         }
       }
@@ -192,6 +195,7 @@ return {
       ensure_installed = {
         'black',
         'isort',
+        'jq',
         'mypy',
         'shfmt',
         'shellcheck',
