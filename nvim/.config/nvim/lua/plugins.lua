@@ -7,6 +7,9 @@ return {
       require("e-ink").setup()
       vim.cmd.colorscheme "e-ink"
       vim.opt.background = "dark"
+      -- make status lines more apparent
+      vim.api.nvim_set_hl(0, "StatusLine", { fg = "#a4a4a4", bg = "#545454", bold = true })
+      vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#a4a4a4", bg = "#474747" })
     end
   },
 
