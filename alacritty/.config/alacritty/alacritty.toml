@@ -20,7 +20,7 @@ normal = { family = "Fira Code", style = "Regular" }
 bold = { family = "Fira Code", style = "Bold" }
 italic = { family = "Fira Code", style = "Italic" }
 bold_italic = { family = "Fira Code", style = "Bold Italic" }
-size = 12.0
+size = 11.0
 
 [colors]
 draw_bold_text_with_bright_colors = true
