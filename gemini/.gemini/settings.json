@@ -18,8 +18,9 @@
       "hideContextPercentage": false
     },
     "showMemoryUsage": true,
-    "customWittyPhrases": [
-      "thinking..."
-    ]
+    "showModelInfoInChat": true,
+    "accessibility": {
+      "disableLoadingPhrases": true
+    }
   }
 }
