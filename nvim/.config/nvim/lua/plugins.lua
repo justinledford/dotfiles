@@ -132,7 +132,7 @@ return {
 
       vim.lsp.config.efm = {
         init_options = { documentFormatting = true },
-        filetypes = { "python", "sh", "bzl", "json", "cmake" },
+        filetypes = { "python", "sh", "bzl", "json", "cmake", "html" },
         rootMarkers = { ".git/" },
         settings = {
           languages = {
@@ -161,6 +161,9 @@ return {
             },
             cmake = {
               { formatCommand = 'cmake-format', formatStdin = false },
+            },
+            html = {
+              { formatCommand = 'prettier', formatStdin = false },
             },
           }
         }
@@ -221,13 +224,14 @@ return {
     opts = {
       ensure_installed = {
         'black',
+        'buildifier',
         'cmakelang',
         'isort',
         'jq',
         'mypy',
+        'prettier',
         'shfmt',
         'shellcheck',
-        'buildifier',
       }
     },
     dependencies = {
