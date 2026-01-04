@@ -95,6 +95,19 @@ return {
         capabilities = capabilities,
       })
 
+      vim.lsp.config.neocmake = {
+        settings = {
+          init_options = {
+            format = {
+              enable = false
+            },
+            lint = {
+              enable = false
+            },
+          }
+        }
+      }
+
       vim.lsp.config.lua_ls = {
         settings = {
           Lua = {
@@ -122,7 +135,7 @@ return {
 
       vim.lsp.config.efm = {
         init_options = { documentFormatting = true },
-        filetypes = { "python", "sh", "bzl", "json" },
+        filetypes = { "python", "sh", "bzl", "json", "cmake" },
         rootMarkers = { ".git/" },
         settings = {
           languages = {
@@ -148,6 +161,9 @@ return {
             },
             json = {
               { formatCommand = 'jq .', formatStdin = true },
+            },
+            cmake = {
+              { formatCommand = 'cmake-format', formatStdin = false },
             },
           }
         }
@@ -207,6 +223,7 @@ return {
     opts = {
       ensure_installed = {
         'black',
+        'cmakelang',
         'isort',
         'jq',
         'mypy',
