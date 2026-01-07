@@ -157,3 +157,27 @@ vim.keymap.set(
   "n",
   "<Leader>r",
   vim.lsp.buf.references)
+
+-- open shell in horizontal split
+vim.keymap.set(
+  "n",
+  "<Leader>sh",
+  ":split | terminal<CR>",
+  { noremap = true }
+)
+
+-- open shell in vertical split
+vim.keymap.set(
+  "n",
+  "<Leader>sv",
+  ":vsplit | terminal<CR>",
+  { noremap = true }
+)
+
+-- exit terminal mode
+vim.keymap.set(
+  "t",
+  "<C-]>",
+  [[<C-\><C-n>]],
+  { noremap = true }
+)
