@@ -13,9 +13,6 @@ return {
     end
   },
 
-  -- enable nvim+tmux integration
-  "christoomey/vim-tmux-navigator",
-
   -- indicate git diffs in the gutter
   "airblade/vim-gitgutter",
 

@@ -1,3 +1,12 @@
+-- switch to neighboring panes with ctrl+hjkl
+for _, v in ipairs({ "h", "j", "k", "l" }) do
+  vim.keymap.set(
+    "n",
+    string.format("<C-%s>", v),
+    string.format("<C-w>%s", v),
+    { noremap = true })
+end
+
 -- Switch splits
 vim.keymap.set(
   "n",
@@ -181,3 +190,12 @@ vim.keymap.set(
   [[<C-\><C-n>]],
   { noremap = true }
 )
+
+-- switch to neighboring panes from terminal mode with ctrl+hjkl
+for _, v in ipairs({ "h", "j", "k", "l" }) do
+  vim.keymap.set(
+    "t",
+    string.format("<C-%s>", v),
+    string.format("<C-\\><C-n><C-w>%s", v),
+    { noremap = true })
+end
