@@ -11,3 +11,11 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
     vim.opt_local.winhighlight = "Normal:NormalFloat,NormalFloat:NormalFloat"
   end,
 })
+
+-- enter insert mode on entering terminals
+vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
+  pattern = "term://*",
+  callback = function()
+    vim.cmd("startinsert")
+  end,
+})
