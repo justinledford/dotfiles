@@ -199,3 +199,19 @@ for _, v in ipairs({ "h", "j", "k", "l" }) do
     string.format("<C-\\><C-n><C-w>%s", v),
     { noremap = true })
 end
+
+-- maximize current pane
+vim.keymap.set(
+  "n",
+  "<Leader>pf",
+  [[<C-w>_<C-w>|]],
+  { noremap = true }
+)
+
+-- reset all panes to equal width
+vim.keymap.set(
+  "n",
+  "<Leader>pr",
+  [[<C-w>=]],
+  { noremap = true }
+)
