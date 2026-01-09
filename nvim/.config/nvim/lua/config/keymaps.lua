@@ -215,3 +215,13 @@ vim.keymap.set(
   [[<C-w>=]],
   { noremap = true }
 )
+
+-- yank path of file in current buffer to default register
+vim.keymap.set(
+  "n",
+  "<Leader>yp",
+  function()
+    vim.fn.setreg('"', vim.fn.expand("%"))
+  end,
+  { noremap = true }
+)
