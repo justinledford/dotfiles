@@ -19,3 +19,7 @@ vim.diagnostic.config({
 })
 vim.g.mapleader = " "
 vim.g.markdown_fenced_languages = { 'python', 'bash=sh', 'c', 'cpp', 'verilog', 'systemverilog' }
+
+-- enable osc52 clipboard to enable pasting from yanks on remote instance
+-- yank with "+y to yank to the system clipboard
+vim.g.clipboard = 'osc52'
