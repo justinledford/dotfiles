@@ -71,7 +71,7 @@ vim.keymap.set(
 -- Show diagnostics
 vim.keymap.set(
   "n",
-  "<Leader>e",
+  "<Leader>t",
   ":Trouble diagnostics toggle<CR>",
   { noremap = true }
 )
@@ -167,36 +167,19 @@ vim.keymap.set(
   "<Leader>r",
   vim.lsp.buf.references)
 
--- toggleterm toggle
+-- open shell in horizontal split
 vim.keymap.set(
   "n",
-  "<Leader>tt",
-  ":ToggleTerm<CR>",
+  "<Leader>sh",
+  ":split | terminal<CR>",
   { noremap = true }
 )
 
-
--- toggleterm open
+-- open shell in vertical split
 vim.keymap.set(
   "n",
-  "<Leader>to",
-  ":TermNew<CR>",
-  { noremap = true }
-)
-
--- toggleterm open vertical
-vim.keymap.set(
-  "n",
-  "<Leader>tv",
-  ":TermNew direction=vertical size=80<CR>",
-  { noremap = true }
-)
-
--- toggleterm select
-vim.keymap.set(
-  "n",
-  "<Leader>ts",
-  ":TermSelect<CR>",
+  "<Leader>sv",
+  ":vsplit | terminal<CR>",
   { noremap = true }
 )
 
