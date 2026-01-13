@@ -8,10 +8,11 @@
     "previewFeatures": true,
     "preferredEditor": "nvim",
     "disableAutoUpdate": true,
-    "disableUpdateNag": true
+    "disableUpdateNag": true,
+    "vimMode": false
   },
   "ui": {
-    "theme": "ANSI",
+    "theme": "rick",
     "hideTips": true,
     "hideBanner": true,
     "footer": {
@@ -21,6 +22,29 @@
     "showModelInfoInChat": true,
     "accessibility": {
       "disableLoadingPhrases": true
+    },
+    "customThemes": {
+      "rick": {
+        "type": "custom",
+        "name": "rick",
+        "Background": "#242424",
+        "Foreground": "#f8f9f4",
+        "LightBlue": "#98989a",
+        "Gray": "#5c5c5c",
+        "Comment": "#93928d",
+        "AccentBlue": "#98989a",
+        "AccentPurple": "#5c5c5c",
+        "AccentCyan": "#e1e1df",
+        "AccentGreen": "#7a6f69",
+        "AccentYellow": "#c2c3be",
+        "AccentRed": "#e2e2e2",
+        "text": {
+          "primary": "#f8f9f4",
+          "secondary": "#93928d",
+          "link": "#98989a",
+          "accent": "#c2c3be"
+        }
+      }
     }
   }
 }

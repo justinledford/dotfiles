@@ -1,0 +1,29 @@
+# rick (dark)
+
+[colors.primary]
+background = "#242424" # black
+foreground = "#f8f9f4" # milk
+
+[colors.selection]
+text = 'CellForeground'
+background = "#5c5c5c" # dark dust
+
+[colors.normal]
+black   = "#242424"    # black
+red     = "#e2e2e2"    # oyster
+green   = "#7a6f69"    # dust
+yellow  = "#c2c3be"    # dinge
+blue    = "#98989a"    # stone
+magenta = "#5c5c5c"    # dark dust
+cyan    = "#e1e1df"    # ash
+white   = "#ece5db"    # bone
+
+[colors.bright]
+black   = "#93928d"    # tear
+red     = "#e2e2e2"    # oyster
+green   = "#7a6f69"    # dust
+yellow  = "#c2c3be"    # dinge
+blue    = "#98989a"    # stone
+magenta = "#5c5c5c"    # dark dust
+cyan    = "#e1e1df"    # ash
+white   = "#f8f9f4"    # milk

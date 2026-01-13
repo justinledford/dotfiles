@@ -1,17 +1,32 @@
 return {
   -- colorscheme
   {
-    "e-ink-colorscheme/e-ink.nvim",
+    "nvim-mini/mini.base16",
     priority = 1000,
-    config = function()
-      require("e-ink").setup()
-      vim.cmd.colorscheme "e-ink"
-      vim.opt.background = "dark"
-      -- make status lines more apparent
-      vim.api.nvim_set_hl(0, "StatusLine", { fg = "#a4a4a4", bg = "#545454", bold = true })
-      vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#a4a4a4", bg = "#474747" })
-    end
+    config = {
+      palette = {
+        -- ui colors
+        base00 = "#242424", -- [black]       - default background
+        base01 = "#3f3f3f", -- [faded black] - lighter background (status bars)
+        base02 = "#5c5c5c", -- [dark dust]   - selection background
+        base03 = "#93928d", -- [tear]        - comments / dim text
+        base04 = "#98989a", -- [stone]       - dark foreground (ui borders)
+        base05 = "#f8f9f4", -- [milk]        - default foreground
+        base06 = "#ece5db", -- [bone]        - light foreground
+        base07 = "#f8f9f4", -- [milk]        - lightest foreground
+        -- syntax colors
+        base08 = "#e2e2e2", -- [oyster]      - variables, xml tags (red)
+        base09 = "#c2c3be", -- [dinge]       - integers, booleans (orange)
+        base0A = "#c2c3be", -- [dinge]       - classes, search text (yellow)
+        base0B = "#7a6f69", -- [dust]        - strings (green)
+        base0C = "#e1e1df", -- [ash]         - regex, escape characters (cyan)
+        base0D = "#dcdcd0", -- [pearl]       - functions, methods (blue)
+        base0E = "#5c5c5c", -- [dark dust]   - keywords, storage (purple)
+        base0F = "#e2e2e2"  -- [oyster]      - deprecated/misc (brown)
+      }
+    },
   },
+
 
   -- indicate git diffs in the gutter
   "airblade/vim-gitgutter",

@@ -1,7 +1,7 @@
 # reference at https://alacritty.org/config-alacritty.html
 
 [general]
-import = ["~/.config/alacritty/e-ink-dark.toml"]
+import = ["~/.config/alacritty/rick.toml"]
 
 [window]
 dimensions = { columns = 80, lines = 24 }
