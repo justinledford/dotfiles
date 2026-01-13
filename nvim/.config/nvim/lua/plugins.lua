@@ -2,6 +2,7 @@ return {
   -- colorscheme
   {
     "nvim-mini/mini.base16",
+    lazy = false,
     priority = 1000,
     config = {
       palette = {
