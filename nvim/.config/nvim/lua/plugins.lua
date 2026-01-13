@@ -27,6 +27,31 @@ return {
     },
   },
 
+  {
+    "sphamba/smear-cursor.nvim",
+    config = {
+      cursor_color = "#bbc5ce", -- 46 POWDER BLUE
+      particles_enabled = true,
+      stiffness = 0.5,
+      trailing_stiffness = 0.2,
+      trailing_exponent = 5,
+      damping = 0.6,
+      gradient_exponent = 0,
+      gamma = 1,
+      never_draw_over_target = true,
+      hide_target_hack = true,
+      particle_spread = 1,
+      particles_per_second = 500,
+      particles_per_length = 50,
+      particle_max_lifetime = 800,
+      particle_max_initial_velocity = 20,
+      particle_velocity_from_cursor = 0.5,
+      particle_damping = 0.15,
+      particle_gravity = -50,
+      min_distance_emit_particles = 0,
+    },
+  },
+
 
   -- indicate git diffs in the gutter
   "airblade/vim-gitgutter",
