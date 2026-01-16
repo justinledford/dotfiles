@@ -8,7 +8,7 @@ function dt() {
   local -r sessions_name="${1}"
 
   mkdir -p "${sessions_dir}"
-  dtach -A "${sessions_dir}/${sessions_name}" bash
+  dtach -A "${sessions_dir}/${sessions_name}" -r winch bash
 }
 
 function dtl() {
