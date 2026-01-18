@@ -282,4 +282,16 @@ return {
       "williamboman/mason.nvim",
     }
   },
+
+  -- select venv for python LSP
+  {
+    "linux-cultist/venv-selector.nvim",
+    lazy = false,
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+    opts = {
+      ft = "python",
+    }
+  },
 }
