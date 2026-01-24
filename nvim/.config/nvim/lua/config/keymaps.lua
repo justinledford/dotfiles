@@ -186,7 +186,7 @@ vim.keymap.set(
 -- exit terminal mode
 vim.keymap.set(
   "t",
-  "<C-]>",
+  "<C-[>",
   [[<C-\><C-n>]],
   { noremap = true }
 )
