@@ -182,7 +182,7 @@ return {
           languages = {
             python = {
               {
-                formatCommand = 'black --quiet -',
+                formatCommand = 'black --quiet --line-length 80 -',
                 formatStdin = true
               },
               {
