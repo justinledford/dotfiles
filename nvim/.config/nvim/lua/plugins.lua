@@ -283,7 +283,7 @@ return {
     }
   },
 
-  -- select venv for python LSP
+  -- select venv for python LS
   {
     "linux-cultist/venv-selector.nvim",
     lazy = false,
@@ -293,5 +293,17 @@ return {
     opts = {
       ft = "python",
     }
+  },
+
+  -- open links, search text and other custom handlers with `gx`
+  {
+    "chrishrb/gx.nvim",
+    keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+    cmd = { "Browse" },
+    init = function()
+      vim.g.netrw_nogx = 1
+    end,
+    config = true,
+    submodules = false,
   },
 }
