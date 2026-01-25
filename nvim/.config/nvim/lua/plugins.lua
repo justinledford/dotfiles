@@ -71,9 +71,12 @@ return {
 
   {
     "ibhagwan/fzf-lua",
-    opts = {}
+    opts = {
+      grep = {
+        hidden = true,
+      }
+    }
   },
-
 
   -- diagnostics
   {
