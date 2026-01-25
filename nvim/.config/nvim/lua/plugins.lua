@@ -309,4 +309,12 @@ return {
     config = true,
     submodules = false,
   },
+
+  -- resize windows without the weird default invertedness
+  {
+    'mrjones2014/smart-splits.nvim',
+    opts = {
+      default_amount = 4
+    }
+  },
 }

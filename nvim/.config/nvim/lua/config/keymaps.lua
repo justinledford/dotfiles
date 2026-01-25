@@ -7,6 +7,33 @@ for _, v in ipairs({ "h", "j", "k", "l" }) do
     { noremap = true })
 end
 
+-- resize panes
+local ss = require('smart-splits')
+vim.keymap.set('n', '<C-S-h>', ss.resize_left, { noremap = true })
+vim.keymap.set('n', '<C-S-j>', ss.resize_down, { noremap = true })
+vim.keymap.set('n', '<C-S-k>', ss.resize_up, { noremap = true })
+vim.keymap.set('n', '<C-S-l>', ss.resize_right, { noremap = true })
+
+-- TODO: break this out into a utility function
+-- TODO: this will squish terminal contents into a single column that can't be restored
+local is_maximized = false
+local last_layout = nil
+local function toggle_maximize()
+  if is_maximized then
+    if last_layout then
+      vim.cmd(last_layout)
+    else
+      vim.cmd('wincmd =')
+    end
+    is_maximized = false
+  else
+    last_layout = vim.fn.winrestcmd()
+    vim.cmd('vertical resize | resize')
+    is_maximized = true
+  end
+end
+vim.keymap.set('n', '<leader>m', toggle_maximize, { noremap = true})
+
 -- Switch splits
 vim.keymap.set(
   "n",
@@ -185,22 +212,6 @@ for _, v in ipairs({ "h", "j", "k", "l" }) do
     string.format("<C-\\><C-n><C-w>%s", v),
     { noremap = true })
 end
-
--- maximize current pane
-vim.keymap.set(
-  "n",
-  "<Leader>pf",
-  [[<C-w>_<C-w>|]],
-  { noremap = true }
-)
-
--- reset all panes to equal width
-vim.keymap.set(
-  "n",
-  "<Leader>pr",
-  [[<C-w>=]],
-  { noremap = true }
-)
 
 -- yank path of file in current buffer to default register
 vim.keymap.set(
