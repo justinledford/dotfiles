@@ -207,36 +207,6 @@ vim.keymap.set(
     require("config.funcs").create_test_file()
   end)
 
--- open shell in horizontal split
-vim.keymap.set(
-  "n",
-  "<Leader>sh",
-  ":split | terminal<CR>",
-  { noremap = true }
-)
-
--- open shell in vertical split
-vim.keymap.set(
-  "n",
-  "<Leader>sv",
-  ":vsplit | terminal<CR>",
-  { noremap = true }
-)
-
--- exit terminal mode
-vim.keymap.set(
-  "t",
-  "<C-[>",
-  [[<C-\><C-n>]],
-  { noremap = true }
-)
-
--- switch to neighboring panes from terminal mode with ctrl+hjkl
-vim.keymap.set('t', '<C-h>', [[<C-\><C-n><cmd>lua require('smart-splits').move_cursor_left()<CR>]], { noremap = true })
-vim.keymap.set('t', '<C-j>', [[<C-\><C-n><cmd>lua require('smart-splits').move_cursor_down()<CR>]], { noremap = true })
-vim.keymap.set('t', '<C-k>', [[<C-\><C-n><cmd>lua require('smart-splits').move_cursor_up()<CR>]], { noremap = true })
-vim.keymap.set('t', '<C-l>', [[<C-\><C-n><cmd>lua require('smart-splits').move_cursor_right()<CR>]], { noremap = true })
-
 -- yank path of file in current buffer to default register
 vim.keymap.set(
   "n",
