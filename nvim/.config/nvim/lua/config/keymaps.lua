@@ -103,8 +103,29 @@ vim.keymap.set(
 -- fzf
 vim.keymap.set(
   "n",
-  "<Leader>fz",
-  ":FzfLua<CR>",
+  "<Leader>fzg",
+  ":FzfLua git_files<CR>",
+  { noremap = true }
+)
+
+vim.keymap.set(
+  "n",
+  "<Leader>fzb",
+  ":FzfLua buffers<CR>",
+  { noremap = true }
+)
+
+vim.keymap.set(
+  "n",
+  "<Leader>fzf",
+  ":FzfLua files<CR>",
+  { noremap = true }
+)
+
+vim.keymap.set(
+  "n",
+  "<Leader>fzl",
+  ":FzfLua live_grep<CR>",
   { noremap = true }
 )
 
