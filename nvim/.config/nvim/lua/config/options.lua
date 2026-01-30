@@ -23,3 +23,7 @@ vim.g.markdown_fenced_languages = { 'python', 'bash=sh', 'c', 'cpp', 'verilog', 
 -- enable osc52 clipboard to enable pasting from yanks on remote instance
 -- yank with "+y to yank to the system clipboard
 vim.g.clipboard = 'osc52'
+
+
+-- fix tmux slow
+vim.opt.shell = '/bin/bash'

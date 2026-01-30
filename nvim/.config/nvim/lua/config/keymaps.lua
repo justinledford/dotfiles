@@ -1,18 +1,15 @@
 -- switch to neighboring panes with ctrl+hjkl
-for _, v in ipairs({ "h", "j", "k", "l" }) do
-  vim.keymap.set(
-    "n",
-    string.format("<C-%s>", v),
-    string.format("<C-w>%s", v),
-    { noremap = true })
-end
+local ss = require('smart-splits')
+vim.keymap.set('n', '<C-h>', ss.move_cursor_left)
+vim.keymap.set('n', '<C-j>', ss.move_cursor_down)
+vim.keymap.set('n', '<C-k>', ss.move_cursor_up)
+vim.keymap.set('n', '<C-l>', ss.move_cursor_right)
 
 -- resize panes
-local ss = require('smart-splits')
-vim.keymap.set('n', '<C-S-h>', ss.resize_left, { noremap = true })
-vim.keymap.set('n', '<C-S-j>', ss.resize_down, { noremap = true })
-vim.keymap.set('n', '<C-S-k>', ss.resize_up, { noremap = true })
-vim.keymap.set('n', '<C-S-l>', ss.resize_right, { noremap = true })
+vim.keymap.set('n', '<A-h>', ss.resize_left)
+vim.keymap.set('n', '<A-j>', ss.resize_down)
+vim.keymap.set('n', '<A-k>', ss.resize_up)
+vim.keymap.set('n', '<A-l>', ss.resize_right)
 
 -- TODO: break this out into a utility function
 -- TODO: this will squish terminal contents into a single column that can't be restored
@@ -205,13 +202,10 @@ vim.keymap.set(
 )
 
 -- switch to neighboring panes from terminal mode with ctrl+hjkl
-for _, v in ipairs({ "h", "j", "k", "l" }) do
-  vim.keymap.set(
-    "t",
-    string.format("<C-%s>", v),
-    string.format("<C-\\><C-n><C-w>%s", v),
-    { noremap = true })
-end
+vim.keymap.set('t', '<C-h>', [[<C-\><C-n><cmd>lua require('smart-splits').move_cursor_left()<CR>]], { noremap = true })
+vim.keymap.set('t', '<C-j>', [[<C-\><C-n><cmd>lua require('smart-splits').move_cursor_down()<CR>]], { noremap = true })
+vim.keymap.set('t', '<C-k>', [[<C-\><C-n><cmd>lua require('smart-splits').move_cursor_up()<CR>]], { noremap = true })
+vim.keymap.set('t', '<C-l>', [[<C-\><C-n><cmd>lua require('smart-splits').move_cursor_right()<CR>]], { noremap = true })
 
 -- yank path of file in current buffer to default register
 vim.keymap.set(
