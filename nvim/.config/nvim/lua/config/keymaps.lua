@@ -129,12 +129,27 @@ vim.keymap.set(
   { noremap = true }
 )
 
--- format
+-- lsp: format
 vim.keymap.set(
   "n",
   "<Leader>f",
   vim.lsp.buf.format,
   { noremap = true }
+)
+
+-- lsp: rename
+vim.keymap.set(
+  "n",
+  "<Leader>rn",
+  vim.lsp.buf.rename,
+  { noremap = true }
+)
+
+-- lsp: show references
+vim.keymap.set(
+  "n",
+  "<Leader>rf",
+  vim.lsp.buf.references
 )
 
 -- open vertical git status
@@ -191,12 +206,6 @@ vim.keymap.set(
   function()
     require("config.funcs").create_test_file()
   end)
-
--- show references
-vim.keymap.set(
-  "n",
-  "<Leader>r",
-  vim.lsp.buf.references)
 
 -- open shell in horizontal split
 vim.keymap.set(
